@@ -9,7 +9,7 @@ CREATE TABLE role
   PRIMARY KEY (Id)
 );
 
-CREATE TABLE Media
+CREATE TABLE media
 (
   Id INT NOT NULL,
   fileName VARCHAR NOT NULL,
@@ -37,7 +37,7 @@ CREATE TABLE message
   media_Id INT NOT NULL,
   PRIMARY KEY (Id),
   FOREIGN KEY (user_Id) REFERENCES user(Id),
-  FOREIGN KEY (media_Id) REFERENCES Media(Id)
+  FOREIGN KEY (media_Id) REFERENCES media(Id)
 );
 
 CREATE TABLE likes
