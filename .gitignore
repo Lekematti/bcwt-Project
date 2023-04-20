@@ -1,0 +1,7 @@
+node_modules/
+jspm_packages/
+Back/uploads/*
+!Back/uploads/.gitkeep
+.env
+thumbNails/*
+!thumbNails/.gitkeep
