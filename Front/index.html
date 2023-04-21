@@ -6,59 +6,74 @@
     <title>Title</title>
 </head>
 <body>
-<div class="wrapper">
-    <div class="nav">
-        <h1 class="title">Overall Oasis</h1>
-        <div class="left">
+    <div class="wrapper">
+        <div class="nav">
+            <h1 class="title">Overall Oasis</h1>
+            <div class="left"></div>
 
-        </div>
-        <button id="login">Login</button>
-        <div id="myModal" class="modal">
-            <div class="modal-content">
-                <span class="close">&times;</span>
-                <label for="userName">User name:</label>
-                <input type="text" id="userName"><br><br>
+            <button id="signUp">Sing Up</button>
+            <div id="myModalSignUp" class="modal">
+                <div class="modal-content">
+                    <span class="close">&times;</span>
+                    <label for="userNameUp">User name:</label>
+                    <input type="text" id="userNameUp"><br><br>
 
-                <label for="password">Password:</label>
-                <input type="password" id="password"><br><br>
+                    <label for="passwordUp">Password:</label>
+                    <input type="password" id="passwordUp"><br><br>
 
-                <input type="submit" value="Login">
+                    <input type="submit" value="Sign up">
+                </div>
+            </div>
+
+            <button id="login">Login</button>
+            <div id="myModalLogin" class="modal">
+                <div class="modal-content">
+                    <span class="close">&times;</span>
+                    <label for="userNameIn">User name:</label>
+                    <input type="text" id="userNameIn"><br><br>
+
+                    <label for="passwordIn">Password:</label>
+                    <input type="password" id="passwordIn"><br><br>
+
+                    <input type="submit" value="Login">
+                </div>
             </div>
         </div>
+
+
+
+        <div class="main">
+            <div class="box" id="left">
+                <div>
+                    <h2>Recent posts</h2>
+                    <ul>
+                        <p>Jotain tekstiä</p>
+                        <p>Lisää tekstiä</p>
+                        <p>Vielä enemmän tekstiä</p>
+                    </ul>
+                </div>
+            </div>
+            <div class="box" id="right">
+                <div class="upper">
+                </div>
+                <div class="lower">
+                    <h3>image</h3>
+                    <p class="mainText">
+                        <span>Lorem ipsum dolor sit amet,
+                        consectetur adipisicing elit.
+                        Adipisci animi aperiam dicta doloribus eum
+                        excepturi, fugit ipsa magnam magni minima
+                        molestiae non obcaecati odio, officiis
+                        perferendis quia quibusdam quo voluptas?
+                        </span>
+                    </p>
+                </div>
+            </div>
+        </div>
+        <footer>
+            Täällä on sivun pohja.
+        </footer>
     </div>
-
-    <div class="main">
-        <div class="box" id="left">
-            <div>
-                <h2>Recent posts</h2>
-                <ul>
-                    <p>Jotain tekstiä</p>
-                    <p>Lisää tekstiä</p>
-                    <p>Vielä enemmän tekstiä</p>
-                </ul>
-            </div>
-        </div>
-        <div class="box" id="right">
-            <div class="upper">
-            </div>
-            <div class="lower">
-                <h3>image</h3>
-                <p class="mainText">
-                    <span>Lorem ipsum dolor sit amet,
-                    consectetur adipisicing elit.
-                    Adipisci animi aperiam dicta doloribus eum
-                    excepturi, fugit ipsa magnam magni minima
-                    molestiae non obcaecati odio, officiis
-                    perferendis quia quibusdam quo voluptas?
-                    </span>
-                </p>
-            </div>
-        </div>
-    </div>
-    <footer>
-        Täällä on sivun pohja.
-    </footer>
-</div>
 <script src="js/main.js"></script>
 </body>
 </html>

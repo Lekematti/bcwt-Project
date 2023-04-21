@@ -1,7 +1,12 @@
-1. run npm install
-2. install express
-2. install express validator
-3. install bcryptjs
-4. install jsonwebtoken
-5. install passport
-6. install dotenv
+First steps 
+create a .env file to root and put this in there:
+
+
+1. run npm install.
+
+2. install express.
+3. install express validator.
+4. install bcryptjs.
+5. install jsonwebtoken.
+6. install passport.
+7. install dotenv.

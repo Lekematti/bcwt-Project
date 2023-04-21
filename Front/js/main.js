@@ -1,23 +1,50 @@
 'use strict';
 
 //Modal
-const modal = document.getElementById("myModal");
 
-const btn = document.getElementById("login");
+//signUp
+const modalSignUp = document.getElementById("myModalSignUp");
 
-const span = document.getElementsByClassName("close")[0];
+const btnSignUp = document.getElementById("signUp");
 
-btn.onclick = function() {
-    modal.style.display = "block";
+const spanSignUp = document.getElementsByClassName("close")[0];
+
+btnSignUp.onclick = function() {
+    modalSignUp.style.display = "block";
 }
 
-span.onclick = function() {
-    modal.style.display = "none";
+spanSignUp.onclick = function() {
+    modalSignUp.style.display = "none";
 }
 
 window.onclick = function(event) {
-    if (event.target == modal) {
-        modal.style.display = "none";
+    if (event.target == modalSignUp) {
+        modalSignUp.style.display = "none";
     }
 }
+//signUp end
+
+
+//login
+const modalLogin = document.getElementById("myModalLogin");
+
+const btnLogin = document.getElementById("login");
+
+const spanLogin = document.getElementsByClassName("close")[0];
+
+btnLogin.onclick = function() {
+    modalLogin.style.display = "block";
+}
+
+spanLogin.onclick = function() {
+    modalLogin.style.display = "none";
+}
+
+window.onclick = function(event) {
+    if (event.target == modalLogin) {
+        modalLogin.style.display = "none";
+    }
+}
+//login end
+
 //Modal end
