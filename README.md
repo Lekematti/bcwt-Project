@@ -3,11 +3,10 @@ create a .env file to root and put this in there:
 
 
 1. run npm install.
-
-2. install express.
-3. install express validator.
-4. install mysql2
-4. install bcryptjs.
-5. install jsonwebtoken.
-6. install passport.
-7. install dotenv.
+2. npm i(or install) express.
+3. npm i express validator.
+4. npm i mysql2
+5. npm i bcryptjs.
+6. npm i jsonwebtoken.
+7. npm i passport.
+8. npm i dotenv.
