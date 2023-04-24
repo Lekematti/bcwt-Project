@@ -4,7 +4,7 @@ const promisePool = pool.promise();
 
 const getAllUsers = async () => {
     try {
-        const sql = `SELECT id, name, email FROM user`;
+        const sql = `SELECT Id, name, email FROM user`;
         const [rows] = await promisePool.query(sql);
         // console.log(rows);
         return rows;
@@ -15,7 +15,7 @@ const getAllUsers = async () => {
 };
 const getUserById = async (id) => {
     try {
-        const sql = `SELECT id, name, email, role FROM user WHERE id=?`;
+        const sql = `SELECT Id, name, email, role FROM user WHERE Id=?`;
         const [rows] = await promisePool.query(sql, [id]);
         // console.log(rows);
         return rows[0];
@@ -39,7 +39,7 @@ const insertUser = async (user) => {
 
 const updateUser = async (user) => {
     try {
-        const sql = 'UPDATE user SET name=?, email=?, password=?, role=? WHERE id=?';
+        const sql = 'UPDATE user SET name=?, email=?, password=?, role=? WHERE Id=?';
         const values = [user.name, user.email, user.passwd, user.role];
         const [result] = await promisePool.query(sql, values);
         return result.insertId;
