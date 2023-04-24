@@ -152,3 +152,10 @@ button {
     margin: 10px;
     text-align: center;
 }
+.input{
+    width: 200px;
+    height: 50px;
+}
+#danger{
+    background: crimson;
+}
