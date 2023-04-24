@@ -6,6 +6,7 @@ create a .env file to root and put this in there:
 
 2. install express.
 3. install express validator.
+4. install mysql2
 4. install bcryptjs.
 5. install jsonwebtoken.
 6. install passport.
