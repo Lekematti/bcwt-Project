@@ -15,8 +15,8 @@ const getAllUsers = async () => {
 };
 const getUserById = async (id) => {
     try {
-        const sql = `SELECT  Id, name, email, role FROM user WHERE Id=?`;
-        const [rows] = await promisePool.query(sql, [Id]);
+        const sql = `SELECT Id, name, email, role FROM user WHERE Id=?`;
+        const [rows] = await promisePool.query(sql, [id]);
         // console.log(rows);
         return rows[0];
     } catch (e) {
