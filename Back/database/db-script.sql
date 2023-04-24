@@ -4,24 +4,24 @@ USE projectDb;
 
 CREATE TABLE `role`
 (
-    `roleName` VARCHAR NOT NULL,
-    `Id` INT NOT NULL,
+    `roleName` VARCHAR(50) NOT NULL,
+    `Id` INT NOT NULL AUTO_INCREMENT,
     PRIMARY KEY (`Id`)
 );
 
 CREATE TABLE `media`
 (
-    `Id` INT NOT NULL,
-    `fileName` VARCHAR NOT NULL,
+    `Id` INT NOT NULL AUTO_INCREMENT,
+    `fileName` VARCHAR(255) NOT NULL,
     PRIMARY KEY (`Id`)
 );
 
 CREATE TABLE `user`
 (
-    `Id` INT NOT NULL,
-    `name` text NOT NULL,
-    `email` VARCHAR NOT NULL,
-    `userName` VARCHAR NOT NULL,
+    `Id` INT NOT NULL AUTO_INCREMENT,
+    `name` VARCHAR(255) NOT NULL,
+    `email` VARCHAR(255) NOT NULL,
+    `userName` VARCHAR(255) NOT NULL,
     `role_Id` INT NOT NULL,
     PRIMARY KEY (`Id`),
     FOREIGN KEY (`role_Id`) REFERENCES `role`(`Id`)
@@ -29,10 +29,10 @@ CREATE TABLE `user`
 
 CREATE TABLE `message`
 (
-    `Id` INT NOT NULL,
-    `header` VARCHAR NOT NULL,
-    `text` VARCHAR NOT NULL,
-    `timeStamp` DATE NOT NULL,
+    `Id` INT NOT NULL AUTO_INCREMENT,
+    `header` VARCHAR(255) NOT NULL,
+    `text` VARCHAR(255) NOT NULL,
+    `timeStamp` DATETIME NOT NULL,
     `user_Id` INT NOT NULL,
     `media_Id` INT NOT NULL,
     PRIMARY KEY (`Id`),
@@ -50,8 +50,8 @@ CREATE TABLE `likesMessage`
 
 CREATE TABLE `reply`
 (
-    `Id` INT NOT NULL,
-    `text` VARCHAR NOT NULL,
+    `Id` INT NOT NULL AUTO_INCREMENT,
+    `text` VARCHAR(255) NOT NULL,
     `msg_Id` INT NOT NULL,
     `user_Id` INT NOT NULL,
     `media_Id` INT NOT NULL,
@@ -59,7 +59,7 @@ CREATE TABLE `reply`
     PRIMARY KEY (`Id`),
     FOREIGN KEY (`msg_Id`) REFERENCES `message`(`Id`),
     FOREIGN KEY (`user_Id`) REFERENCES `user`(`Id`),
-    FOREIGN KEY (`media_Id`) REFERENCES `Media`(`Id`),
+    FOREIGN KEY (`media_Id`) REFERENCES `media`(`Id`),
     FOREIGN KEY (`parent_Id`) REFERENCES `reply`(`Id`)
 );
 
