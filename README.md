@@ -3,6 +3,7 @@ create a .env file to root and put this in there:
 
 
 1. run npm install.
+2. -g nodemom
 2. npm i(or install) express.
 3. npm i express validator.
 4. cors

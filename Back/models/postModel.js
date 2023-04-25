@@ -2,7 +2,7 @@
 const pool = require('../database/db');
 const promisePool = pool.promise();
 
-const getAllCats = async () => {
+const getAllPosts = async () => {
     try {
         // do the LEFT (or INNER) JOIN to get owner's name as ownername (from wop_user table).
         const sql = `SELECT wop_cat.*, wop_user.name AS ownername FROM wop_cat
@@ -16,7 +16,7 @@ const getAllCats = async () => {
     }
 };
 
-const getCatById = async (id) => {
+const getPostById = async (id) => {
     try {
         const sql = `SELECT wop_cat.*, wop_user.name AS ownername FROM wop_cat
                  LEFT JOIN wop_user ON wop_cat.owner = wop_user.user_id
@@ -30,7 +30,7 @@ const getCatById = async (id) => {
     }
 };
 
-const insertCat = async (cat) => {
+const insertPost = async (cat) => {
     try {
         const sql = `INSERT INTO wop_cat VALUES (?, ?, ?, ?, ?, ?);`;
         const [rows] = await promisePool.query(sql, [
@@ -48,7 +48,7 @@ const insertCat = async (cat) => {
     }
 };
 
-const modifyCat = async (cat) => {
+const modifyPost = async (cat) => {
     try {
         const sql = `UPDATE wop_cat SET name=?, weight=?, owner=?, birthdate=?
                  WHERE cat_id=?`;
@@ -67,7 +67,7 @@ const modifyCat = async (cat) => {
     }
 };
 
-const deleteCat = async (id) => {
+const deletePost = async (id) => {
     try {
         const sql = `DELETE FROM wop_cat WHERE cat_id=?`;
         const [rows] = await promisePool.query(sql, [id]);
@@ -80,9 +80,9 @@ const deleteCat = async (id) => {
 };
 
 module.exports = {
-    getAllCats,
-    getCatById,
-    insertCat,
-    modifyCat,
-    deleteCat,
+    getAllPosts,
+    getPostById,
+    insertPost,
+    modifyPost,
+    deletePost,
 };

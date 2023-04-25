@@ -80,8 +80,3 @@ module.exports = {
     insertUser,
     updateUser,
 };
-
-
-
-
-
