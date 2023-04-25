@@ -1,10 +1,10 @@
 'use strict';
 const express = require('express');
 const cors = require('cors');
-const catRoute = require('./routes/postRoute');
-const userRoute = require('./routes/userRoute');
-const authRoute = require('./routes/authRoute');
-const passport = require('./utils/passport');
+const postRoute = require('../bcwt-Project/Back/routes/postRoute');
+const userRoute = require('../bcwt-Project/Back/routes/userRoute');
+const authRoute = require('../bcwt-Project/Back/routes/authRoute');
+//const passport = require('./utils/passport');
 const app = express();
 const port = 3000;
 
@@ -15,7 +15,7 @@ app.use((req, res, next) => {
 });
 
 // Serve example-ui
-app.use(express.static('example-ui'));
+app.use(express.static('Front'));
 // Serve uploaded image files
 //app.use('/uploads', express.static('uploads'));
 // Serve uploaded image files (example-ui compliant using root route)
@@ -30,10 +30,10 @@ app.use(cors());
 app.use(express.json());
 app.use(express.urlencoded({extended: true}));
 // Use passport for authentication
-app.use(passport.initialize());
+//app.use(passport.initialize());
 
-app.use('/auth', authRoute);
-app.use('/cat', passport.authenticate('jwt', {session: false}), catRoute);
-app.use('/user', passport.authenticate('jwt', {session: false}), userRoute);
+//app.use('/auth', authRoute);
+//app.use('/cat', passport.authenticate('jwt', {session: false}), catRoute);
+//app.use('/user', passport.authenticate('jwt', {session: false}), userRoute);
 
 app.listen(port, () => console.log(`Example app listening on port ${port}!`));

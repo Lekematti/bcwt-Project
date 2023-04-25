@@ -11,39 +11,43 @@
             <h1 class="title">Overall Oasis</h1>
             <div class="left"></div>
 
-            <button id="signUp">Sign Up</button>
+            <button id="signUpBtn">Sign Up</button>
+            <form action="userView.html">
             <div id="myModalSignUp" class="modal">
                 <div class="modal-content">
                     <span class="close1">&times;</span>
-                    <label for="userNameUp">User name:</label>
+                    <label for="userNameUp">Username:</label>
                     <input type="text" id="userNameUp"><br><br>
 
                     <label for="nameUp">Name:</label>
                     <input type="text" id="nameUp"><br><br>
 
                     <label for="emailUp">Email:</label>
-                    <input type="text" id="emailUp"><br><br>
+                    <input type="email" id="emailUp"><br><br>
 
                     <label for="passwordUp">Password:</label>
                     <input type="password" id="passwordUp"><br><br>
 
-                    <input type="submit" value="Sign up">
+                    <button id="submitSignup" type="submit">Sign In</button>
                 </div>
             </div>
-
+            </form>
             <button id="login">Login</button>
+            <form action="userView.html">
             <div id="myModalLogin" class="modal">
                 <div class="modal-content">
                     <span class="close2">&times;</span>
-                    <label for="userNameIn">User name:</label>
+                    <label>Username:</label>
                     <input type="text" id="userNameIn"><br><br>
 
                     <label for="passwordIn">Password:</label>
                     <input type="password" id="passwordIn"><br><br>
 
-                    <input type="submit" value="Login">
+                    <button id="submitLogin" type="submit">Log In</button>
                 </div>
             </div>
+            </form>
+
         </div>
 
 
