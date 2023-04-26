@@ -35,7 +35,7 @@ router.route('/')
         postController.putPost
     );
 
-// All /cat/:id endpoints
+// All :id endpoints
 router.route('/:id')
     .get(postController.getPost)
     .delete(postController.deletePost);
