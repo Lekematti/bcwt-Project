@@ -3,7 +3,7 @@ const url = 'http://localhost:3000'; // change url when uploading to server
 
 // select existing html elements
 const addForm = document.querySelector('#addPost');
-const userList = document.querySelector('.add-owner');
+//const userList = document.querySelector('.add-owner');
 
 addForm.addEventListener('submit', async (evt) => {
     evt.preventDefault();
@@ -15,8 +15,9 @@ addForm.addEventListener('submit', async (evt) => {
         },
         body: fd,
     };
+    console.log(fetchOptions);
     const response = await fetch(url + '/post', fetchOptions);
     const json = await response.json();
     alert(json.message);
-    location.href = 'front.html';
+    location.href = 'userView.html';
 });

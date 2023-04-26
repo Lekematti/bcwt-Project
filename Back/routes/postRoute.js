@@ -21,10 +21,13 @@ const upload = multer({dest: 'uploads/', fileFilter});
 router.route('/')
     .get(postController.getPostList)
     .post(upload.single('post'),
-        body('postName').isAlphanumeric().isLength({min: 1, max: 50}).escape().trim(),
-        body('postText').isDate(),
-        body('file').isInt({min: 1}),
-        postController.post
+        //body('header'),
+        //body('text'),
+        //body('timeStamp'),
+        //body('user_Id'),
+        //body('media_Id'),
+        //body('file'),
+        postController.postPost
     )
     .put(
         body('postName').isAlphanumeric().isLength({min: 1, max: 50}),

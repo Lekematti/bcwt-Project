@@ -4,9 +4,9 @@ const promisePool = pool.promise();
 
 const getAllPosts = async () => {
     try {
-        // do the LEFT (or INNER) JOIN to get owner's name as ownername (from wop_user table).
-        const sql = `SELECT wop_cat.*, wop_user.name AS ownername FROM wop_cat
-        LEFT JOIN wop_user ON wop_cat.owner = wop_user.user_id`;
+
+        const sql = `SELECT * FROM message, user.Id
+        LEFT JOIN user ON message.user_Id = user.Id`;
         const [rows] = await promisePool.query(sql);
         console.log(rows);
         return rows;
@@ -15,29 +15,14 @@ const getAllPosts = async () => {
         throw new Error('sql query failed');
     }
 };
-
-const getPostById = async (id) => {
+const insertPost = async (message) => {
     try {
-        const sql = `SELECT wop_cat.*, wop_user.name AS ownername FROM wop_cat
-        LEFT JOIN wop_user ON wop_cat.owner = wop_user.user_id
-        WHERE cat_id = ?`;
-        const [rows] = await promisePool.query(sql, [id]);
-        // console.log(rows);
-        return rows;
-    } catch (e) {
-        console.error('error', e.message);
-        throw new Error('sql query failed');
-    }
-};
-const insertPost = async (cat) => {
-    try {
-        const sql = `INSERT INTO wop_cat VALUES (?, ?, ?, ?, ?, ?);`;
+        const sql = `INSERT INTO message VALUES (?, ?, ?) INTO media VALUES (?);`;
         const [rows] = await promisePool.query(sql, [
             null, // id is auto_increment
-            cat.name,
-            cat.weight,
-            cat.owner,
-            cat.filename,
+            message.header,
+            message.text,
+            message.filename,
         ]);
         // console.log(rows);
         return rows;
@@ -80,7 +65,6 @@ const deletePost = async (id) => {
 
 module.exports = {
     getAllPosts,
-    getPostById,
     insertPost,
     modifyPost,
     deletePost,

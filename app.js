@@ -26,12 +26,14 @@ app.use('/thumbnails', express.static('thumbnails'));
 // Add 'Access-Control-Allow-Origin: *' header to all
 // responses using cors middleware
 app.use(cors());
+
 // middleware for parsing request body
 app.use(express.json());
 app.use(express.urlencoded({extended: true}));
+
 // Use passport for authentication
 //app.use(passport.initialize());
-
+app.use('/post', postRoute);
 //app.use('/auth', authRoute);
 //app.use('/cat', passport.authenticate('jwt', {session: false}), catRoute);
 //app.use('/user', passport.authenticate('jwt', {session: false}), userRoute);
