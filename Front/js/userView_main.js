@@ -1,30 +1,11 @@
 'use strict';
 const url = 'http://localhost:3000'; // change url when uploading to server
 
-
-const addForm = document.querySelector('#addPost');
-
-addForm.addEventListener('submit', async (evt) => {
-    evt.preventDefault();
-    const fd = new FormData(addForm);
-    const fetchOptions = {
-        method: 'POST',
-        headers: {
-            Authorization: 'Bearer ' + sessionStorage.getItem('token'),
-        },
-        body: fd,
-    };
-    const response = await fetch(url + '/post', fetchOptions);
-    const json = await response.json();
-    alert(json.message);
-    location.href = 'userView.html';
-});
-
 // select existing html elements
 const ul = document.querySelector('#list');
 
 // create cat cards
-const createCatCards = (posts) => {
+const createPostCards = (posts) => {
     // clear ul
     ul.innerHTML = '';
     posts.forEach((post) => {
@@ -100,7 +81,7 @@ const getPost = async () => {
         };
         const response = await fetch(url + '/post', fetchOptions);
         const post = await response.json();
-        createCatCards(post);
+        createPostCards(post);
     } catch (e) {
         console.log(e.message);
     }

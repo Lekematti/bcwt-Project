@@ -30,21 +30,21 @@ const getPostById = async (id) => {
     }
 };
 
-const insertPost = async (cat) => {
+const insertPost = async (post) => {
     try {
-        const sql = `INSERT INTO wop_cat VALUES (?, ?, ?, ?, ?, ?);`;
+        const sql = `INSERT INTO message VALUES (?, ?, ?, ?, ?, ?);`;
         const [rows] = await promisePool.query(sql, [
             null, // id is auto_increment
-            cat.name,
-            cat.weight,
-            cat.owner,
-            cat.filename,
+            post.header,
+            post.timestamp,
+            post.user_Id,
+            post.media_Id,
         ]);
         // console.log(rows);
         return rows;
     } catch (e) {
         console.error('error', e.message);
-        throw new Error('sql insert cat failed');
+        throw new Error('sql insert post failed');
     }
 };
 

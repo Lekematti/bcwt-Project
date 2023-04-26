@@ -32,6 +32,7 @@ app.use(express.urlencoded({extended: true}));
 // Use passport for authentication
 //app.use(passport.initialize());
 
+app.use('/post', postRoute);
 //app.use('/auth', authRoute);
 // app.use('/cat', passport.authenticate('jwt', {session: false}), postRoute);
 // app.use('/user', passport.authenticate('jwt', {session: false}), userRoute);
