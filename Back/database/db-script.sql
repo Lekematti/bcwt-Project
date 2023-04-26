@@ -2,13 +2,6 @@ DROP DATABASE IF EXISTS projectDb;
 CREATE DATABASE projectDb;
 USE projectDb;
 
-CREATE TABLE `role`
-(
-    `roleName` VARCHAR(50) NOT NULL,
-    `Id` INT NOT NULL AUTO_INCREMENT,
-    PRIMARY KEY (`Id`)
-);
-
 CREATE TABLE `media`
 (
     `Id` INT NOT NULL AUTO_INCREMENT,
@@ -24,8 +17,7 @@ CREATE TABLE `user`
     `userName` VARCHAR(255) NOT NULL,
     `password` VARCHAR(255) NOT NULL,
     `role_Id` INT NOT NULL,
-    PRIMARY KEY (`Id`),
-    FOREIGN KEY (`role_Id`) REFERENCES `role`(`Id`)
+    PRIMARY KEY (`Id`)
 );
 
 CREATE TABLE `message`
