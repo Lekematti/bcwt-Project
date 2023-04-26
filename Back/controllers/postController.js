@@ -6,14 +6,14 @@ const {validationResult} = require('express-validator');
 
 const getPostList = async (req, res) => {
     try {
-        const cats = await catModel.getAllCats();
+        const posts = await postModel.getAllPosts();
         // Functionality below is now done in 'db.js' by 'dateStrings: true' setting
         // convert ISO date to date only
         // cats = cats.map((cat) => {
         //   cat.birthdate = cat.birthdate.toISOString().split('T')[0];
         //   return cat;
         // });
-        res.json(cats);
+        res.json(posts);
     } catch (error) {
         res.status(500).json({error: 500, message: error.message});
     }
@@ -21,25 +21,25 @@ const getPostList = async (req, res) => {
 
 const getPost = async (req, res) => {
     // convert id value to number
-    const catId = Number(req.params.id);
+    const postId = Number(req.params.id);
     // check if number is not an integer
-    if (!Number.isInteger(catId)) {
+    if (!Number.isInteger(postId)) {
         res.status(400).json({error: 500, message: 'invalid id'});
         return;
     }
     // TODO: wrap to try-catch
-    const [cat] = await catModel.getCatById(catId);
+    const [post] = await postModel.getPostById(postId);
     // console.log('getCat', cat);
-    if (cat) {
-        res.json(cat);
+    if (post) {
+        res.json(post);
     } else {
         // send response 404 if id not found in array
         // res.sendStatus(404);
-        res.status(404).json({message: 'Cat not found.'});
+        res.status(404).json({message: 'Post not found.'});
     }
 };
 
-const post = async (req, res) => {
+const postPost = async (req, res) => {
     // console.log('posting a cat', req.body, req.file);
     if (!req.file) {
         res.status(400).json({
@@ -57,14 +57,14 @@ const post = async (req, res) => {
         });
         return;
     }
-    const newCat = req.body;
-    newCat.filename = req.file.filename;
+    const newPost = req.body;
+    newPost.filename = req.file.filename;
     // use req.user (extracted from token by passport) to add correct owner id
     // NOTE: owner field must not be validated anymore in cat route when uploading cats
-    newCat.owner = req.user.user_id;
-    await makeThumbnail(req.file.path, newCat.filename);
+    newPost.owner = req.user.user_id;
+    await makeThumbnail(req.file.path, newPost.filename);
     try {
-        const result = await postModel.insertCat(newCat);
+        const result = await postModel.insertPost(newPost);
         res.status(201).json({message: 'new cat added!'});
     } catch (error) {
         res.status(500).json({error: 500, message: error.message});
@@ -72,7 +72,7 @@ const post = async (req, res) => {
 };
 
 const putPost = async (req, res) => {
-    // console.log('modifying a cat', req.body);
+    // console.log('modifying a post', req.body);
     const validationErrors = validationResult(req);
     if (!validationErrors.isEmpty()) {
         res.status(400).json({
@@ -82,36 +82,36 @@ const putPost = async (req, res) => {
         });
         return;
     }
-    const cat = req.body;
+    const post = req.body;
     // for now owner is always the logged in user (read from token)
-    cat.owner = req.user.user_id;
+    post.owner = req.user.user_id;
     // Note the two alternatives for passing the cat id in router
     if (req.params.id) {
-        cat.id = parseInt(req.params.id);
+        post.id = parseInt(req.params.id);
     }
     try {
-        console.log('updating a cat', req.body);
+        console.log('updating', req.body);
         // only owner of the cat can update it's data (req.user.user_id == cat.owner)
         // checked in catModel with sql query
-        const result = await postModel.modifyCat(cat, req.user.user_id);
-        res.status(200).json({message: 'cat modified!'});
+        const result = await postModel.modifypost(post, req.user.user_id);
+        res.status(200).json({message: 'post modified!'});
     } catch (error) {
         res.status(500).json({error: 500, message: error.message});
     }
 };
 
 const deletePost = async (req, res) => {
-    // console.log('deleting a cat', req.params.id);
+    // console.log('deleting a post', req.params.id);
     try {
         // only owner of the cat can delete it (TODO: or admin)
-        const result = await catModel.deleteCat(req.params.id, req.user.user_id);
-        res.status(200).json({message: 'cat deleted!'});
+        const result = await catModel.deletePost(req.params.id, req.user.user_id);
+        res.status(200).json({message: 'post deleted!'});
     } catch (error) {
         res.status(500).json({error: 500, message: error.message});
     }
 };
 
-const catController = {getPostList, getPost, post, putPost, deletePost};
-module.exports = catController;
+const postController = {getPostList, getPost, postPost, putPost, deletePost};
+module.exports = postController;
 
 

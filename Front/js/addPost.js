@@ -2,10 +2,9 @@
 const url = 'http://localhost:3000'; // change url when uploading to server
 
 // select existing html elements
-const addForm = document.querySelector('#addCatForm');
+const addForm = document.querySelector('#addPost');
 const userList = document.querySelector('.add-owner');
 
-// submit add cat form
 addForm.addEventListener('submit', async (evt) => {
     evt.preventDefault();
     const fd = new FormData(addForm);
@@ -16,7 +15,7 @@ addForm.addEventListener('submit', async (evt) => {
         },
         body: fd,
     };
-    const response = await fetch(url + '/cat', fetchOptions);
+    const response = await fetch(url + '/post', fetchOptions);
     const json = await response.json();
     alert(json.message);
     location.href = 'front.html';
