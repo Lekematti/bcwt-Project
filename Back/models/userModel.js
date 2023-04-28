@@ -49,17 +49,7 @@ const updateUser = async (user) => {
     }
 };
 
-// const deleteUser = async (id) => {
-//   try {
-//     const sql = `DELETE FROM wop_user WHERE user_id=?`;
-//     const [rows] = await promisePool.query(sql, [id]);
-//     //console.log(rows);
-//     return rows;
-//   } catch (e) {
-//     console.error("error", e.message);
-//     throw new Error('sql delete user failed');
-//   }
-// }
+
 // User authentication
 const getUserLogin = async (email) => {
     //console.log('get user login for', email);

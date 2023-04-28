@@ -17,6 +17,11 @@ const fileFilter = (req, file, cb) => {
 };
 const upload = multer({dest: 'uploads/', fileFilter});
 
+
+//testi
+router.get('/', postController.getCatList)
+router.get('/:catId',postController.getCat)
+
 // Root of cat endpoing (e.g. http://localhost:3000/post)
 router.route('/')
     .get(postController.getPostList)
@@ -28,16 +33,16 @@ router.route('/')
         // body('media_Id'),
         postController.postPost
     )
-    .put(
-        body('postName'),
-        body('postText'),
-        body('file'),
-        postController.putPost
-    );
+    // .put(
+    //     body('postName'),
+    //     body('postText'),
+    //     body('file'),
+    //     postController.putPost
+    // );
 
 // All :id endpoints
-router.route('/:id')
-    .get(postController.getPost)
-    .delete(postController.deletePost);
+// router.route('/:id')
+//     .get(postController.getPost)
+//     .delete(postController.deletePost);
 
 module.exports = router;

@@ -8,6 +8,11 @@ const authRoute = require('../bcwt-Project/Back/routes/authRoute');
 const app = express();
 const port = 3000;
 
+//testi
+app.use("/post", postRoute);
+app.use('/user', userRoute)
+
+
 // Log requests middleware
 app.use((req, res, next) => {
     console.info(req.method + ' ' + req.path);//new Date() + ': ' +
@@ -16,19 +21,23 @@ app.use((req, res, next) => {
 
 // Serve example-ui
 app.use(express.static('Front'));
+
 // Serve uploaded image files
 //app.use('/uploads', express.static('uploads'));
+
 // Serve uploaded image files (example-ui compliant using root route)
 app.use(express.static('uploads'));
+
 // serve thumbnails
 app.use('/thumbnails', express.static('thumbnails'));
 
-// Add 'Access-Control-Allow-Origin: *' header to all
 // responses using cors middleware
 app.use(cors());
+
 // middleware for parsing request body
 app.use(express.json());
 app.use(express.urlencoded({extended: true}));
+
 // Use passport for authentication
 //app.use(passport.initialize());
 

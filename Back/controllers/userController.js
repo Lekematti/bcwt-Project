@@ -56,35 +56,10 @@ const postUser = async (req, res) => {
     }
 };
 
-
-/*const putUser = async (reg, res) => {
-    console.log('modify a user', req.body);
-    try {
-        const user = req.body;
-        const result = await userModel.modifyUser(user)
-        // send correct response if upload successful
-        res.status(200).json({message: 'user modified'});
-    }
-    catch (error){
-        res.status(400).json({error: 500, message: 'user modifying failed'})
-    }
-}
-
-const deleteUser = async (reg, res) => {
-    console.log('delete a cat', req.params.userId);
-    try {
-        const result = await userModel.deleteUser(req.params.userId)
-        // send correct response if upload successful
-        res.status(200).json({message: 'user deleted'});
-    }
-    catch (error){
-        res.status(400).json({error: 500, message: 'user deletion failed'})
-    }
-}*/
 const checkToken = (req, res) => {
     res.json({user: req.user});
 };
 
-const userController = {getUserList, getUser, postUser, checkToken,} // putUser, deleteUser
+const userController = {getUserList, getUser, postUser, checkToken,}
 module.exports = userController;
 
