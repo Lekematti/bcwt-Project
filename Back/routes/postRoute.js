@@ -19,18 +19,19 @@ const upload = multer({dest: 'uploads/', fileFilter});
 
 
 //testi
-router.get('/', postController.getCatList)
+router.get('/', postController.getPostList)
+router.get('/uploads', postController.getPostList)
 router.get('/:catId',postController.getCat)
 
 // Root of cat endpoing (e.g. http://localhost:3000/post)
 router.route('/')
     .get(postController.getPostList)
-    .post(upload.single('post'),
-        body('header'),
-        body('text'),
-        // body('timeStamp'),
-        // body('user_Id'),
-        // body('media_Id'),
+    .post(upload.single('photo'),
+        body('title'),
+        body('content'),
+        body('photo'),
+        body('timeStamp'),
+        body('user_Id'),
         postController.postPost
     )
     // .put(

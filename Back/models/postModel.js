@@ -10,7 +10,7 @@ const cats = [
         birthdate: '2010-10-30',
         weight: '5',
         owner: '1',
-        filename: '/img/',
+        filename: 'img/',
     },
     {
         id: '2',
@@ -26,7 +26,7 @@ const cats = [
         birthdate: '2010-10-30',
         weight: '5',
         owner: '1',
-        filename: '/img/',
+        filename: 'img/',
     },
     {
         id: '4',
@@ -34,32 +34,36 @@ const cats = [
         birthdate: '2010-10-30',
         weight: '5',
         owner: '1',
-        filename: '/img/',
+        filename: 'img/',
     },
 
 ];
 
 const getAllPosts = async () => {
     try {
-        // do the LEFT (or INNER) JOIN to get owner's name as ownername (from wop_user table).
-        const sql = `SELECT * FROM message`;
-        const [rows] = await promisePool.query(sql);
-        console.log(rows);
+        const [rows] = await promisePool.query(
+            `SELECT message.*, user.name AS ownername FROM message 
+    LEFT JOIN user ON message.user_Id = user.Id ORDER BY message.timestamp DESC`
+        );
         return rows;
-    } catch (e) {
-        console.error('error', e.message);
-        throw new Error('sql query failed');
+    } catch (error) {
+        console.error('error occurred while executing the query:', error);
+        throw error;
     }
 };
 
 
+
 const insertPost = async (post) => {
     try {
-        const sql = `INSERT INTO message VALUES (?, ?, ?);`;
+        const sql = `INSERT INTO message VALUES (?, ?, ?, ?, ?, ?);`;
         const [rows] = await promisePool.query(sql, [
+            null,
             post.title,
             post.content,
             post.photo,
+            post.timeStamp,
+            post.user_Id,
         ]);
         // console.log(rows);
         return rows;
@@ -68,6 +72,7 @@ const insertPost = async (post) => {
         throw new Error('sql insert post failed');
     }
 };
+
 
 module.exports = {
     getAllPosts,
