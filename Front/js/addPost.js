@@ -38,17 +38,31 @@ const createPostCards = (posts) => {
 
         const figure = document.createElement('figure').appendChild(img);
 
+
         const h2 = document.createElement('h2');
         h2.innerHTML = post.name;
 
         const p1 = document.createElement('p');
-        p1.innerHTML = `Timestamp: ${post.timeStamp}`;
+        p1.innerHTML = `Birthdate: ${post.birthdate}`;
 
         const p2 = document.createElement('p');
-        p2.innerHTML = `text: ${post.content}p`;
+        p2.innerHTML = `Weight: ${post.weight}kg`;
 
         const p3 = document.createElement('p');
-        p3.innerHTML = `Username: ${post.username}`;
+        p3.innerHTML = `Owner: ${post.ownername}`;
+
+
+        // const h2 = document.createElement('h2');
+        // h2.innerHTML = post.name;
+        //
+        // const p1 = document.createElement('p');
+        // p1.innerHTML = `Timestamp: ${post.timeStamp}`;
+        //
+        // const p2 = document.createElement('p');
+        // p2.innerHTML = `text: ${post.content}p`;
+        //
+        // const p3 = document.createElement('p');
+        // p3.innerHTML = `Username: ${post.username}`;
 
         // add modify button
         // const modButton = document.createElement('a');

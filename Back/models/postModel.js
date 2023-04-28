@@ -10,7 +10,7 @@ const cats = [
         birthdate: '2010-10-30',
         weight: '5',
         owner: '1',
-        filename: 'http://placekitten.com/400/300',
+        filename: '/img/',
     },
     {
         id: '2',
@@ -20,6 +20,23 @@ const cats = [
         owner: '2',
         filename: 'http://placekitten.com/400/302',
     },
+    {
+        id: '3',
+        name: 'Frank',
+        birthdate: '2010-10-30',
+        weight: '5',
+        owner: '1',
+        filename: '/img/',
+    },
+    {
+        id: '4',
+        name: 'Frank',
+        birthdate: '2010-10-30',
+        weight: '5',
+        owner: '1',
+        filename: '/img/',
+    },
+
 ];
 
 const getAllPosts = async () => {
