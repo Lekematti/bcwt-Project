@@ -7,9 +7,6 @@ const {validationResult} = require('express-validator');
 const getPostList = async (req, res) => {
     try {
         const posts = await postModel.getAllPosts();
-
-
-
         res.json(posts);
     } catch (error) {
         res.status(500).json({error: 500, message: error.message});
