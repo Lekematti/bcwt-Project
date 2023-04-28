@@ -55,13 +55,11 @@ const getAllPosts = async () => {
 
 const insertPost = async (post) => {
     try {
-        const sql = `INSERT INTO message VALUES (?, ?, ?, ?, ?, ?);`;
+        const sql = `INSERT INTO message VALUES (?, ?, ?);`;
         const [rows] = await promisePool.query(sql, [
-            null, // id is auto_increment
-            post.header,
-            post.text,
-            post.user_Id,
-            post.media_Id,
+            post.title,
+            post.content,
+            post.photo,
         ]);
         // console.log(rows);
         return rows;

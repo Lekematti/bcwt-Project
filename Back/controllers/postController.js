@@ -43,13 +43,13 @@ const getPostList = async (req, res) => {
 
 const postPost = async (req, res) => {
     // console.log('posting a post', req.body, req.file);
-    if (!req.file) {
-        res.status(400).json({
-            status: 400,
-            message: 'Invalid or missing image file'
-        });
-        return;
-    }
+    // if (!req.file) {
+    //     res.status(400).json({
+    //         status: 400,
+    //         message: 'Invalid or missing image file'
+    //     });
+    //     return;
+    // }
     const validationErrors = validationResult(req);
     if (!validationErrors.isEmpty()) {
         res.status(400).json({
@@ -60,10 +60,10 @@ const postPost = async (req, res) => {
         return;
     }
     const newPost = req.body;
-    newPost.filename = req.file.filename;
+    //newPost.filename = req.file.filename;
     // use req.user (extracted from token by passport) to add correct owner id
     // NOTE: owner field must not be validated anymore in cat route when uploading cats
-    newPost.owner = req.user.user_id;
+    //newPost.owner = req.user.user_id;
     //await makeThumbnail(req.file.path, newPost.filename);
     try {
         const result = await postModel.insertPost(newPost);
