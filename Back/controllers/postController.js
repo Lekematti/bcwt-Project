@@ -62,11 +62,11 @@ const postPost = async (req, res) => {
     const newPost = {
         title: req.body.title,
         content: req.body.content,
-        photo: req.body.photo,
+        filename: req.file.filename,
 
     }
-    //newPost.filename = req.file.filename;
-    // use req.user (extracted from token by passport) to add correct owner id
+    newPost.filename = req.file.filename;
+    //use req.user (extracted from token by passport) to add correct owner id
     // NOTE: owner field must not be validated anymore in cat route when uploading cats
     //newPost.owner = req.user.user_id;
     //await makeThumbnail(req.file.path, newPost.filename);
@@ -80,4 +80,3 @@ const postPost = async (req, res) => {
 
 const postController = {getPostList, postPost, getCatList, getCat,};
 module.exports = postController;
-

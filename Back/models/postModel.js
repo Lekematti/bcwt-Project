@@ -61,7 +61,7 @@ const insertPost = async (post) => {
             null,
             post.title,
             post.content,
-            post.photo,
+            post.filename,
             post.timeStamp,
             post.user_Id,
         ]);
@@ -72,7 +72,6 @@ const insertPost = async (post) => {
         throw new Error('sql insert post failed');
     }
 };
-
 
 module.exports = {
     getAllPosts,

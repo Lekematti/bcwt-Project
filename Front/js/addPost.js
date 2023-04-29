@@ -2,7 +2,7 @@
 const url = 'http://localhost:3000'; // change url when uploading to server
 
 // select existing html elements
-const userList = document.querySelector('.add-owner');
+//const userList = document.querySelector('.add-owner');
 
 // submit add cat form
 const addForm = document.querySelector('#addPost');

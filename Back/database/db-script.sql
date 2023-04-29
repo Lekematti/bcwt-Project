@@ -18,7 +18,7 @@ CREATE TABLE `message`
     `Id` INT NOT NULL AUTO_INCREMENT,
     `title` VARCHAR(255) NOT NULL,
     `content` VARCHAR(255) NOT NULL,
-    `photo` TEXT,
+    `filename` TEXT,
     `timeStamp` TIMESTAMP NOT NULL,
     `user_Id` INT,
     PRIMARY KEY (`Id`),
@@ -35,5 +35,3 @@ CREATE TABLE `reply`
     FOREIGN KEY (`msg_Id`) REFERENCES `message`(`Id`),
     FOREIGN KEY (`parent_Id`) REFERENCES `reply`(`Id`)
 );
-
-
