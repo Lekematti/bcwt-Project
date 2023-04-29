@@ -58,5 +58,17 @@ const postPost = async (req, res) => {
     }
 };
 
-const postController = {getPostList, postPost,};
+const deletePost = async (req, res) => {
+
+    try {
+        console.log('deleting a post', req.params.id);
+        // only owner of the post can delete it (TODO: or admin)
+        const result = await postModel.deletePost(req.params.id/*, req.user.u_Id*/);
+        res.status(200).json({message: 'post deleted!'});
+    } catch (error) {
+        res.status(500).json({error: 500, message: error.message});
+    }
+};
+
+const postController = {getPostList, postPost, deletePost,};
 module.exports = postController;

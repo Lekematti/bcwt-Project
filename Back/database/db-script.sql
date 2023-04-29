@@ -5,32 +5,32 @@ USE projectdb;
 
 CREATE TABLE `user`
 (
-    `Id` INT NOT NULL AUTO_INCREMENT,
+    `u_Id` INT NOT NULL AUTO_INCREMENT,
     `email` VARCHAR(255) NOT NULL,
     `userName` VARCHAR(255),
     `password` VARCHAR(255) NOT NULL,
-    PRIMARY KEY (`Id`)
+    PRIMARY KEY (`u_Id`)
 );
 
 CREATE TABLE `message`
 (
-    `Id` INT NOT NULL AUTO_INCREMENT,
+    `m_Id` INT NOT NULL AUTO_INCREMENT,
     `title` VARCHAR(255) NOT NULL,
     `content` VARCHAR(255) NOT NULL,
     `filename` TEXT,
     `timeStamp` TIMESTAMP NOT NULL,
     `user_Id` INT,
-    PRIMARY KEY (`Id`),
-    FOREIGN KEY (`user_Id`) REFERENCES `user`(`Id`)
+    PRIMARY KEY (`m_Id`),
+    FOREIGN KEY (`user_Id`) REFERENCES `user`(`u_Id`)
 );
 
 CREATE TABLE `reply`
 (
-    `Id` INT NOT NULL AUTO_INCREMENT,
+    `r_Id` INT NOT NULL AUTO_INCREMENT,
     `text` VARCHAR(255) NOT NULL,
     `msg_Id` INT NOT NULL,
     `parent_Id` INT NOT NULL,
-    PRIMARY KEY (`Id`),
-    FOREIGN KEY (`msg_Id`) REFERENCES `message`(`Id`),
-    FOREIGN KEY (`parent_Id`) REFERENCES `reply`(`Id`)
+    PRIMARY KEY (`r_Id`),
+    FOREIGN KEY (`msg_Id`) REFERENCES `message`(`m_Id`),
+    FOREIGN KEY (`parent_Id`) REFERENCES `reply`(`r_Id`)
 );

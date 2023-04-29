@@ -6,7 +6,7 @@ const getAllPosts = async () => {
     try {
         const [rows] = await promisePool.query(
             `SELECT * FROM message 
-    LEFT JOIN user ON message.user_Id = user.Id ORDER BY message.timestamp DESC`
+    LEFT JOIN user ON message.user_Id = user.u_Id ORDER BY message.timestamp DESC`
         );
         return rows;
     } catch (error) {
@@ -36,9 +36,9 @@ const insertPost = async (post) => {
 
 const deletePost = async (id) => {
     try {
-        const sql = `DELETE FROM message WHERE Id=?`;
+        const sql = `DELETE FROM message WHERE m_Id=?`;
         const [rows] = await promisePool.query(sql, [id]);
-        // console.log(rows);
+        console.log(rows);
         return rows;
     } catch (e) {
         console.error('error', e.message);

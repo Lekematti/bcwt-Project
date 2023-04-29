@@ -45,44 +45,27 @@ const createPostCards = (posts) => {
         const p1 = document.createElement('p');
         p1.innerHTML = `${post.content}`;
 
-        // const h2 = document.createElement('h2');
-        // h2.innerHTML = post.name;
-        //
-        // const p1 = document.createElement('p');
-        // p1.innerHTML = `Timestamp: ${post.timeStamp}`;
-        //
-        // const p2 = document.createElement('p');
-        // p2.innerHTML = `text: ${post.content}p`;
-        //
-        // const p3 = document.createElement('p');
-        // p3.innerHTML = `Username: ${post.username}`;
-
-        // add modify button
-        // const modButton = document.createElement('a');
-        // modButton.innerHTML = 'Modify';
-        // modButton.href = `modify-cat.html?id=${post.Id}`;
-        // modButton.classList.add('button');
-        //
-        // // delete selected cat
-        // const delButton = document.createElement('button');
-        // delButton.innerHTML = 'Delete';
-        // delButton.classList.add('button');
-        // delButton.addEventListener('click', async () => {
-        //     const fetchOptions = {
-        //         method: 'DELETE',
-        //         headers: {
-        //             Authorization: 'Bearer ' + sessionStorage.getItem('token'),
-        //         },
-        //     };
-        //     try {
-        //         const response = await fetch(url + '/cat/' + cat.cat_id, fetchOptions);
-        //         const json = await response.json();
-        //         console.log('delete response', json);
-        //         getCat();
-        //     } catch (e) {
-        //         console.log(e.message);
-        //     }
-        // });
+        // delete selected post
+        const delButton = document.createElement('button');
+        delButton.innerHTML = 'Delete';
+        delButton.classList.add('button');
+        delButton.addEventListener('click', async () => {
+            const fetchOptions = {
+                method: 'DELETE',
+                headers: {
+                    Authorization: 'Bearer ' + sessionStorage.getItem('token'),
+                },
+            };
+            try {
+                const response = await fetch(url + '/post/' + post.Id, fetchOptions);
+                const json = await response.json();
+                console.log("rabadababuu",post);
+                console.log('delete response', json);
+                getPost();
+            } catch (e) {
+                console.log(e.message);
+            }
+        });
 
         const li = document.createElement('li');
         li.classList.add('light-border');
@@ -90,10 +73,7 @@ const createPostCards = (posts) => {
         li.appendChild(h2);
         li.appendChild(figure);
         li.appendChild(p1);
-        //li.appendChild(p2);
-        //li.appendChild(p3);
-        //li.appendChild(modButton);
-        //li.appendChild(delButton);
+        li.appendChild(delButton);
         ul.appendChild(li);
     });
 };

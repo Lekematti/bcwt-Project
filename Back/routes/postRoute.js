@@ -39,9 +39,10 @@ router.route('/')
     //     postController.putPost
     // );
 
-// All :id endpoints
-// router.route('/:id')
-//     .get(postController.getPost)
-//     .delete(postController.deletePost);
+
+// All /post/:id endpoints
+router.route('/:id')
+    //.get(catController.getCat)
+    .delete(postController.deletePost);
 
 module.exports = router;

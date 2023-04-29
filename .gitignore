@@ -5,3 +5,5 @@ Back/uploads/*
 .env
 thumbNails/*
 !thumbNails/.gitkeep
+uploads/*
+!uploads/.gitkeep
