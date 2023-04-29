@@ -23,14 +23,13 @@ CREATE TABLE `user`
 CREATE TABLE `message`
 (
     `Id` INT NOT NULL AUTO_INCREMENT,
-    `header` VARCHAR(255) NOT NULL,
-    `text` VARCHAR(255) NOT NULL,
+    `title` VARCHAR(255) NOT NULL,
+    `content` VARCHAR(255) NOT NULL,
     `timeStamp` DATETIME NOT NULL,
     `user_Id` INT NOT NULL,
-    `media_Id` INT NOT NULL,
+    `photo` INT NOT NULL,
     PRIMARY KEY (`Id`),
     FOREIGN KEY (`user_Id`) REFERENCES `user`(`Id`),
-    FOREIGN KEY (`media_Id`) REFERENCES `media`(`Id`)
 );
 
 CREATE TABLE `likesMessage`

@@ -5,17 +5,17 @@ const router = express.Router();
 const postController = require('../controllers/postController');
 const {body} = require('express-validator');
 
-const fileFilter = (req, file, cb) => {
-    const allowedTypes = ['image/jpeg', 'image/png'];
-    if (allowedTypes.includes(file.mimetype)) {
-        // accept file
-        cb(null, true);
-    } else {
-        // reject file
-        cb(null, false);
-    }
-};
-const upload = multer({dest: 'uploads/', fileFilter});
+// const fileFilter = (req, file, cb) => {
+//     const allowedTypes = ['image/jpeg', 'image/png'];
+//     if (allowedTypes.includes(file.mimetype)) {
+//         // accept file
+//         cb(null, true);
+//     } else {
+//         // reject file
+//         cb(null, false);
+//     }
+// };
+const upload = multer({dest: 'uploads/'/*, fileFilter*/});
 
 
 //testi

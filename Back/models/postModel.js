@@ -61,7 +61,7 @@ const insertPost = async (post) => {
             post.content,
             post.photo,
         ]);
-        // console.log(rows);
+        console.log(rows);
         return rows;
     } catch (e) {
         console.error('error', e.message);
