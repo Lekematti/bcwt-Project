@@ -2,47 +2,10 @@
 const pool = require('../database/db');
 const promisePool = pool.promise();
 
-//testi
-const cats = [
-    {
-        id: '1',
-        name: 'Frank',
-        birthdate: '2010-10-30',
-        weight: '5',
-        owner: '1',
-        filename: 'img/',
-    },
-    {
-        id: '2',
-        name: 'James',
-        birthdate: '2015-12-25',
-        weight: '11',
-        owner: '2',
-        filename: 'http://placekitten.com/400/302',
-    },
-    {
-        id: '3',
-        name: 'Frank',
-        birthdate: '2010-10-30',
-        weight: '5',
-        owner: '1',
-        filename: 'img/',
-    },
-    {
-        id: '4',
-        name: 'Frank',
-        birthdate: '2010-10-30',
-        weight: '5',
-        owner: '1',
-        filename: 'img/',
-    },
-
-];
-
 const getAllPosts = async () => {
     try {
         const [rows] = await promisePool.query(
-            `SELECT message.*, user.name AS ownername FROM message 
+            `SELECT message.*, user.name, message.filename FROM message 
     LEFT JOIN user ON message.user_Id = user.Id ORDER BY message.timestamp DESC`
         );
         return rows;
@@ -51,8 +14,6 @@ const getAllPosts = async () => {
         throw error;
     }
 };
-
-
 
 const insertPost = async (post) => {
     try {
@@ -76,5 +37,4 @@ const insertPost = async (post) => {
 module.exports = {
     getAllPosts,
     insertPost,
-    cats,
 };
