@@ -34,7 +34,20 @@ const insertPost = async (post) => {
     }
 };
 
+const deletePost = async (id) => {
+    try {
+        const sql = `DELETE FROM message WHERE Id=?`;
+        const [rows] = await promisePool.query(sql, [id]);
+        // console.log(rows);
+        return rows;
+    } catch (e) {
+        console.error('error', e.message);
+        throw new Error('sql delete post failed');
+    }
+};
+
 module.exports = {
     getAllPosts,
     insertPost,
+    deletePost,
 };
