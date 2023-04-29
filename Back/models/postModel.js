@@ -5,7 +5,7 @@ const promisePool = pool.promise();
 const getAllPosts = async () => {
     try {
         const [rows] = await promisePool.query(
-            `SELECT message.*, user.name, message.filename FROM message 
+            `SELECT * FROM message 
     LEFT JOIN user ON message.user_Id = user.Id ORDER BY message.timestamp DESC`
         );
         return rows;
