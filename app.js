@@ -26,7 +26,7 @@ app.use(express.static('Front'));
 //app.use('/uploads', express.static('uploads'));
 
 // Serve uploaded image files (example-ui compliant using root route)
-app.use(express.static('uploads'));
+app.use('', express.static('uploads'));
 
 // serve thumbnails
 app.use('/thumbnails', express.static('thumbnails'));

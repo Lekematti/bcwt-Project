@@ -5,16 +5,16 @@ const router = express.Router();
 const postController = require('../controllers/postController');
 const {body} = require('express-validator');
 
-const fileFilter = (req, file, cb) => {
-    const allowedTypes = ['image/jpeg', 'image/png'];
-    if (allowedTypes.includes(file.mimetype)) {
-        // accept file
-        cb(null, true);
-    } else {
-        // reject file
-        cb(null, false);
-    }
-};
+ const fileFilter = (req, file, cb) => {
+     const allowedTypes = ['image/jpeg', 'image/png'];
+     if (allowedTypes.includes(file.mimetype)) {
+         // accept file
+         cb(null, true);
+              } else {
+         // reject file
+         cb(null, false);
+     }
+ };
 const upload = multer({dest: 'uploads/', fileFilter});
 
 
@@ -26,10 +26,10 @@ router.get('/:catId',postController.getCat)
 // Root of cat endpoing (e.g. http://localhost:3000/post)
 router.route('/')
     .get(postController.getPostList)
-    .post(upload.single('photo'),
+    .post(upload.single('filename'),
         body('title'),
         body('content'),
-        body('photo'),
+        body('filename'),
         body('timeStamp'),
         body('user_Id'),
         postController.postPost
