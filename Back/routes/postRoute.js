@@ -20,10 +20,8 @@ const upload = multer({dest: 'uploads/', fileFilter});
 
 //testi
 router.get('/', postController.getPostList)
-router.get('/uploads', postController.getPostList)
-router.get('/:catId',postController.getCat)
 
-// Root of cat endpoing (e.g. http://localhost:3000/post)
+// Root of post endpoint (e.g. http://localhost:3000/post)
 router.route('/')
     .get(postController.getPostList)
     .post(upload.single('filename'),

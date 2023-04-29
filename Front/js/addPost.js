@@ -25,7 +25,7 @@ addForm.addEventListener('submit', async (evt) => {
 
 const ul = document.querySelector('#list');
 
-// create cat cards
+// create post cards
 const createPostCards = (posts) => {
     // clear ul
     ul.innerHTML = '';
