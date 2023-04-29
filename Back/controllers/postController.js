@@ -59,7 +59,12 @@ const postPost = async (req, res) => {
         });
         return;
     }
-    const newPost = req.body;
+    const newPost = {
+        title: req.body.title,
+        content: req.body.content,
+        photo: req.body.photo,
+
+    }
     //newPost.filename = req.file.filename;
     // use req.user (extracted from token by passport) to add correct owner id
     // NOTE: owner field must not be validated anymore in cat route when uploading cats
@@ -67,7 +72,7 @@ const postPost = async (req, res) => {
     //await makeThumbnail(req.file.path, newPost.filename);
     try {
         const result = await postModel.insertPost(newPost);
-        res.status(201).json({message: 'new cat added!'});
+        res.status(201).json({message: 'New post added'});
     } catch (error) {
         res.status(500).json({error: 500, message: error.message});
     }
