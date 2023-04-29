@@ -15,6 +15,7 @@ passport.use(
     console.log('login creds', username, password);
     try {
       const [user] = await getUserLogin(username);
+      console.log('user:', user)
       console.log('Local strategy', user); // result is binary row
       if (user === undefined) {
         return done(null, false, {message: 'Incorrect email.'});
@@ -43,14 +44,11 @@ passport.use(
       // Get user data from DB using userModel 
       console.log('user from token', jwtPayload);
       try {
-        const user = await getUserById(jwtPayload.user_id);
+        const user = await getUserById(jwtPayload.Id);
         return done(null, user);
       } catch (error) {
         return done(error);
       }
-      // (or extract data from token, note: user data in token might be outdated) 
-      // return done(null, jwtPayload);
-
     }
   )
 );

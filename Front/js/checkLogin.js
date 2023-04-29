@@ -4,7 +4,7 @@ const url = 'http://localhost:3000'; // change url when uploading to server
 (async () => {
     // check sessionStorage
     if (!sessionStorage.getItem('token') || !sessionStorage.getItem('user')) {
-        location.href = 'login.html';
+        location.href = 'index.html';
         return;
     }
     // check if token valid

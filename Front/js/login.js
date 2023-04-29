@@ -2,9 +2,9 @@
 const url = 'http://localhost:3000'; // change url when uploading to server
 
 // select existing html elements
-const loginForm = document.querySelector('#login-form');
+const loginForm = document.querySelector('#loginForm');
 const addUserForm = document.querySelector('#add-user-form');
-
+let user = JSON.parse(sessionStorage.getItem('user'));
 // login
 loginForm.addEventListener('submit', async (evt) => {
     evt.preventDefault();
@@ -26,7 +26,8 @@ loginForm.addEventListener('submit', async (evt) => {
         // save token
         sessionStorage.setItem('token', json.token);
         sessionStorage.setItem('user', JSON.stringify(json.user));
-        location.href = 'front.html';
+        user = JSON.parse(sessionStorage.getItem('user'));
+        location.href = 'userView.html';
     }
 });
 

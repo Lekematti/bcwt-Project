@@ -1,9 +1,8 @@
 'use strict';
-
 //Modal
 
 const modalSignUp = document.getElementById("myModalSignUp");
-const btnSignUp = document.getElementById("signUp");
+const btnSignUp = document.getElementById("signUpBtn");
 const spanSignUp = document.getElementsByClassName("close1")[0];
 
 btnSignUp.onclick = function() {
@@ -33,5 +32,34 @@ window.onclick = function(event) {
         modalLogin.style.display = "none";
     }
 }
-
 //Modal end
+//login/signup functionalities
+
+const submitLogIn = document.getElementById("submitLogin");
+
+submitLogIn.addEventListener("click", function (event) {
+    const username = document.getElementById("userNameIn").value;
+    const password = document.getElementById("passwordIn").value;
+
+    if (!username || !password) {
+        alert("Fill in correct information!")
+        event.preventDefault();
+    }else{
+        window.location.href = "index.html";
+    }
+});
+const submitSignUp = document.getElementById("submitSignup");
+
+submitSignUp.addEventListener("click", function (event) {
+    const username = document.getElementById("userNameUp").value;
+    const email = document.getElementById("emailUp").value;
+    const password = document.getElementById("passwordUp").value;
+    console.log('email:', email); // add console log
+    console.log('password:', password); // add console log
+    if (!username || !email || !password) {
+        alert("Fill in correct information!")
+        event.preventDefault();
+    }else{
+        window.location.href = "userView.html";
+    }
+});

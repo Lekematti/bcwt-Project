@@ -5,12 +5,13 @@ require('dotenv').config();
 
 const login = (req, res) => {
     passport.authenticate('local', {session: false}, (err, user, info) => {
+        console.log('err:', err);
+        console.log('user:', user);
+        console.log('info:', info);
         if (err || !user) {
             console.log('auth error', info);
             return res.status(401).json({
                 message: 'Wrong username or password',
-                // or more detailed message from passport:
-                //message: info.message,
             });
         }
         req.login(user, {session: false}, (err) => {
@@ -18,7 +19,7 @@ const login = (req, res) => {
                 res.json({message: err});
             }
             // generate a signed json web token with the user id in payload and return it in the response
-            const token = jwt.sign({user_id: user.user_id}, process.env.JWT_SECRET);
+            const token = jwt.sign({Id: user.Id}, process.env.JWT_SECRET);
             return res.json({user, token});
         });
     })(req, res);
