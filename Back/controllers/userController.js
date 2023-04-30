@@ -26,7 +26,7 @@ const getUser = async (req, res) => {
     }
 };
 
-const postUser = async (req, res) => {
+/*const postUser = async (req, res) => {
     try {
         // add cat details to cats array
         const newUser = {
@@ -41,33 +41,33 @@ const postUser = async (req, res) => {
     catch (error){
         res.status(400).json({error: 500, message: 'adding new user failed'})
     }
-};
+};*/
 
-// const postUser = async (req, res) => {
-//     console.log('Creating a new user: ', req.body);
-//     const salt = await bcrypt.genSalt(10);
-//     const password = await bcrypt.hash(req.body.password, salt);
-//     const newUser = {
-//         userName: req.body.userName,
-//         email: req.body.email,
-//         password: password,
-//     };
-//     const errors = validationResult(req);
-//     console.log('validation errors', errors);
-//     if (errors.isEmpty()) {
-//         try {
-//             const result = await userModel.insertUser(newUser);
-//             res.status(201).json({message: 'user created', Id: result});
-//         } catch (error) {
-//             res.status(500).json({message: error.message});
-//         }
-//     } else {
-//         res.status(400).json({
-//             message: 'user creation failed',
-//             errors: errors.array(),
-//         });
-//     }
-// };
+const postUser = async (req, res) => {
+    console.log('Creating a new user: ', req.body);
+    const salt = await bcrypt.genSalt(10);
+    const password = await bcrypt.hash(req.body.password, salt);
+    const newUser = {
+        userName: req.body.userName,
+        email: req.body.email,
+        password: password,
+    };
+    const errors = validationResult(req);
+    console.log('validation errors', errors);
+    if (errors.isEmpty()) {
+        try {
+            const result = await userModel.insertUser(newUser);
+            res.status(201).json({message: 'user created', Id: result});
+        } catch (error) {
+            res.status(500).json({message: error.message});
+        }
+    } else {
+        res.status(400).json({
+            message: 'user creation failed',
+            errors: errors.array(),
+        });
+    }
+};
 
 const checkToken = (req, res) => {
     res.json({user: req.user});

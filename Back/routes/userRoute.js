@@ -8,22 +8,18 @@ router.route('/')
     .get(userController.getUserList)
     .post(
 
-        body('userNameIn').isAlphanumeric().isLength({min: 1, max: 40}).escape().trim(),
-        body('userNameUp').isAlphanumeric().isLength({min: 1, max: 40}).escape().trim(),
-        //body('emailUp').isEmail().normalizeEmail(),
-        body('passwordIn').isLength({min: 4}),
-        body('passwordUp').isLength({min: 4}),
+        body('username').isAlphanumeric().isLength({min: 1, max: 40}).escape().trim(),
+        body('email').isEmail().normalizeEmail(),
+        body('password').isLength({min: 4}),
         userController.postUser)
-
-router.route('/')
+router.get("/token", userController.checkToken);
+/*router.route('/')
     .get(
         body('userNameUp').isAlphanumeric().isLength({min: 1, max: 40}).escape().trim(),
         body('emailUp').isEmail().normalizeEmail(),
         body('passwordUp').isLength({min: 4}),
-        userController.getUser)
-
-
-//router.get("/token", userController.checkToken);
+        userController.getUser)*/
 //.delete(userController.deleteUser);
-
+router.route('/:id')
+    .get(userController.getUser)
 module.exports = router;

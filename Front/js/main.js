@@ -54,8 +54,7 @@ submitSignUp.addEventListener("click", function (event) {
     const username = document.getElementById("userNameUp").value;
     const email = document.getElementById("emailUp").value;
     const password = document.getElementById("passwordUp").value;
-    console.log('email:', email); // add console log
-    console.log('password:', password); // add console log
+
     if ( !email || !username || !password) {
         alert("Fill in correct information!")
         event.preventDefault();

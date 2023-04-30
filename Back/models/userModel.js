@@ -38,25 +38,26 @@ const getUserById = async (id) => {
 };
 
 
-// const insertUser = async (user) => {
-//     console.log('insertuser', user)
-//     try {
-//         const sql = `INSERT INTO user VALUES (null, ?, ?, ?)`;
-//         const [rows] = await promisePool.query(sql, [
-//             user.email,
-//             user.userName,
-//             user.password
-//         ]);
-//         console.log(rows);
-//         return rows;
-//     } catch (e) {
-//         throw new Error('sql query failed');
-//     }
-// }
-
 const insertUser = async (user) => {
+    console.log('insertuser', user)
     try {
-        const sql = 'INSERT INTO user VALUES (null, ?, ?, ?)';
+        const sql = `INSERT INTO user VALUES (?, ?, ?, ?)`;
+        const [rows] = await promisePool.query(sql, [
+            null,
+            user.username,
+            user.email,
+            user.password
+        ]);
+        console.log(rows);
+        return rows;
+    } catch (e) {
+        throw new Error('sql query failed');
+    }
+}
+
+/*const insertUser = async (user) => {
+    try {
+        const sql = `INSERT INTO user VALUES (null, ?, ?, ?)`;
         const values = [user.userName, user.email, user.password];
         const [result] = await promisePool.query(sql, values);
         return result.insertId;
@@ -64,7 +65,7 @@ const insertUser = async (user) => {
         console.error('error', e.message);
         throw new Error('sql query failed');
     }
-};
+};*/
 
 /*const updateUser = async (user) => {
     try {
