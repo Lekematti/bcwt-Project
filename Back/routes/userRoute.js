@@ -8,7 +8,7 @@ router.route('/')
     .get(userController.getUserList)
     .post(
 
-        body('username').isAlphanumeric().isLength({min: 1, max: 40}).escape().trim(),
+        body('userName').isAlphanumeric().isLength({min: 1, max: 40}).escape().trim(),
         body('email').isEmail().normalizeEmail(),
         body('password').isLength({min: 4}),
         userController.postUser)
@@ -20,6 +20,5 @@ router.get("/token", userController.checkToken);
         body('passwordUp').isLength({min: 4}),
         userController.getUser)*/
 //.delete(userController.deleteUser);
-router.route('/:id')
-    .get(userController.getUser)
+
 module.exports = router;

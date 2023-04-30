@@ -36,7 +36,7 @@ const getUser = async (req, res) => {
         }
         const result = await userModel.insertUser(newUser)
         // send correct response if upload successful
-        res.status(201).json({message: 'new user added'});
+        res.status(201).json({message: 'new user added',newUser});
     }
     catch (error){
         res.status(400).json({error: 500, message: 'adding new user failed'})

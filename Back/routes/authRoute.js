@@ -10,7 +10,7 @@ router
     .get('/logout', authController.logout)
     .post(
         '/register',
-        body('username').isAlphanumeric().isLength({min: 1, max: 40}).escape().trim(),
+        body('userName').isAlphanumeric().isLength({min: 1, max: 40}).escape().trim(),
         body('email').isEmail().normalizeEmail(),
         body('password').isLength({min: 4}).trim(),
         postUser
