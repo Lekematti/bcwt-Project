@@ -36,10 +36,28 @@ const getUserById = async (id) => {
         throw new Error('sql query failed');
     }
 };
+
+
+// const insertUser = async (user) => {
+//     console.log('insertuser', user)
+//     try {
+//         const sql = `INSERT INTO user VALUES (null, ?, ?, ?)`;
+//         const [rows] = await promisePool.query(sql, [
+//             user.email,
+//             user.userName,
+//             user.password
+//         ]);
+//         console.log(rows);
+//         return rows;
+//     } catch (e) {
+//         throw new Error('sql query failed');
+//     }
+// }
+
 const insertUser = async (user) => {
     try {
         const sql = 'INSERT INTO user VALUES (null, ?, ?, ?)';
-        const values = [user.username, user.email, user.password];
+        const values = [user.userName, user.email, user.password];
         const [result] = await promisePool.query(sql, values);
         return result.insertId;
     } catch (e) {

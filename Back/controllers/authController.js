@@ -19,7 +19,7 @@ const login = (req, res) => {
                 res.json({message: err});
             }
             // generate a signed json web token with the user id in payload and return it in the response
-            const token = jwt.sign({Id: user.Id}, process.env.JWT_SECRET);
+            const token = jwt.sign({Id: user.u_Id}, process.env.JWT_SECRET);
             return res.json({user, token});
         });
     })(req, res);

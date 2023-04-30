@@ -3,7 +3,7 @@ const url = 'http://localhost:3000'; // change url when uploading to server
 
 // select existing html elements
 const loginForm = document.querySelector('#loginForm');
-const addUserForm = document.querySelector('#add-user-form');
+const addUserForm = document.querySelector('#signUpForm');
 let user = JSON.parse(sessionStorage.getItem('user'));
 // login
 loginForm.addEventListener('submit', async (evt) => {

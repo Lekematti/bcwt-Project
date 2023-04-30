@@ -12,17 +12,18 @@
         <div class="left"></div>
 
         <button id="signUpBtn">Sign Up</button>
-        <form action="http://localhost:3000/auth/register" method="post">
+        <form id="signUpForm" action="http://localhost:3000/auth/register" method="post">
             <div id="myModalSignUp" class="modal">
                 <div class="modal-content">
                     <span class="close1">&times;</span>
-                    <label for="userNameUp">Username:</label>
+
+                    <label for="userNameUp">User name:</label>
                     <input type="text" id="userNameUp"><br><br>
 
                     <label for="emailUp">Email:</label>
                     <input type="email" id="emailUp"><br><br>
 
-                    <label for="passwordUp">Password:</label>
+                    <label for="passwordUp">Password (min-4):</label>
                     <input type="password" id="passwordUp"><br><br>
 
                     <button id="submitSignup" type="submit">Sign In</button>

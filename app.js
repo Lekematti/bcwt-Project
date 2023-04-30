@@ -29,8 +29,9 @@ app.use(express.urlencoded({extended: true}));
 // Use passport for authentication
 app.use(passport.initialize());
 
-app.use('/post', postRoute);
 app.use('/auth', authRoute);
-app.use('/user', passport.authenticate('jwt', {session: false}), userRoute);
+app.use('/post', postRoute);
+app.use('/user', userRoute);
+//app.use('/user', passport.authenticate('jwt', {session: false}), userRoute);
 
 app.listen(port, () => console.log(`Example app listening on port ${port}!`));

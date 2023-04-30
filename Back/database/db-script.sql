@@ -6,8 +6,8 @@ USE projectdb;
 CREATE TABLE `user`
 (
     `u_Id` INT NOT NULL AUTO_INCREMENT,
+    `userName` VARCHAR(255) NOT NULL,
     `email` VARCHAR(255) NOT NULL,
-    `userName` VARCHAR(255),
     `password` VARCHAR(255) NOT NULL,
     PRIMARY KEY (`u_Id`)
 );
