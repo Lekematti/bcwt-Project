@@ -2,7 +2,7 @@
 const url = 'http://localhost:3000'; // change url when uploading to server
 
 // select existing html elements
-//const userList = document.querySelector('.add-owner');
+const userList = document.querySelector('.add-owner');
 
 // submit add cat form
 const addForm = document.querySelector('#addPost');
@@ -75,6 +75,34 @@ const createPostCards = (posts) => {
         li.appendChild(p1);
         li.appendChild(delButton);
         ul.appendChild(li);
+        if (user.u_Id === message.user_Id) {
+
+            // delete selected cat
+            const delButton = document.createElement('button');
+            delButton.innerHTML = 'Delete';
+            delButton.classList.add('button');
+            delButton.addEventListener('click', async () => {
+                const fetchOptions = {
+                    method: 'DELETE',
+                    headers: {
+                        Authorization: 'Bearer ' + sessionStorage.getItem('token'),
+                    },
+                };
+                try {
+                    const response = await fetch(
+                        url + '/post/' + message.m_Id,
+                        fetchOptions
+                    );
+                    const json = await response.json();
+                    console.log('delete response', json);
+                    getPost();
+                } catch (e) {
+                    console.log(e.message);
+                }
+            });
+
+            li.appendChild(delButton);
+        }
     });
 };
 

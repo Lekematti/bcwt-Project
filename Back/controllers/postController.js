@@ -20,6 +20,23 @@ const getPostList = async (req, res) => {
 };
 
 
+const getPost = async (req, res) => {
+    //convert id value to number
+    const postId = Number(req.params.id);
+    //check if a number is not an integer
+    if(!Number.isInteger(postId)) {
+        res.status(400).json({error: 500, message: 'invalid id'})
+        return;
+    }
+    try {
+        const [post] = await postModel.getPostById(postId)
+        res.json(post);
+    }
+    catch (error) {
+        res.status(404).json({message: 'post not found'});
+    }
+}
+
 
 const postPost = async (req, res) => {
     // console.log('posting a post', req.body, req.file);
@@ -70,5 +87,5 @@ const deletePost = async (req, res) => {
     }
 };
 
-const postController = {getPostList, postPost, deletePost,};
+const postController = {getPostList, getPost, postPost, deletePost,};
 module.exports = postController;

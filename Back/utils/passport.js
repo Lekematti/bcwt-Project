@@ -11,10 +11,10 @@ require('dotenv').config();
 
 // local strategy for username password login
 passport.use(
-  new Strategy(async (username, password, done) => {
-    console.log('login creds', username, password);
+  new Strategy(async (userName, password, done) => {
+    console.log('login creds', userName, password);
     try {
-      const [user] = await getUserLogin(username);
+      const [user] = await getUserLogin(userName);
       console.log('user:', user)
       console.log('Local strategy', user); // result is binary row
       if (user === undefined) {

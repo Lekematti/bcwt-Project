@@ -6,7 +6,10 @@ const authController = require('../controllers/authController');
 const {postUser} = require('../controllers/userController');
 
 router
-    .post('/login', authController.login)
+    .post('/login',
+        body('userName').isAlphanumeric().isLength({min: 1, max: 40}).escape().trim(),
+        body('password').isLength({min: 4}).trim(),
+        authController.login)
     .get('/logout', authController.logout)
     .post(
         '/register',

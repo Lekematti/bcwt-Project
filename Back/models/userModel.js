@@ -14,7 +14,7 @@ const getAllUsers = async () => {
     }
 };
 const getUserLogin = async (userName) => {
-    //console.log('get user login for', email);
+    console.log('get user login for', userName);
     try {
         const [rows] = await promisePool.execute(
             'SELECT * FROM user WHERE userName=?;',

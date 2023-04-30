@@ -15,6 +15,20 @@ const getAllPosts = async () => {
     }
 };
 
+const getPostById = async (id) => {
+    try {
+        const sql = `SELECT message.*, user.userName AS Owner FROM message
+                LEFT JOIN user ON message.user_Id = user.u_Id
+                WHERE m_Id = ?`;
+        const [rows] = await promisePool.query(sql, [id]);
+        // console.log(rows);
+        return rows;
+    } catch (e) {
+        console.error('error', e.message);
+        throw new Error('sql query failed');
+    }
+};
+
 const insertPost = async (post) => {
     try {
         const sql = `INSERT INTO message VALUES (?, ?, ?, ?, ?, ?);`;
@@ -48,6 +62,7 @@ const deletePost = async (id) => {
 
 module.exports = {
     getAllPosts,
+    getPostById,
     insertPost,
     deletePost,
 };
