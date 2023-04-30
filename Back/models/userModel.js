@@ -4,7 +4,7 @@ const promisePool = pool.promise();
 
 const getAllUsers = async () => {
     try {
-        const sql = `SELECT Id, email, userName FROM user`;
+        const sql = `SELECT u_Id, userName ,email FROM user`;
         const [rows] = await promisePool.query(sql);
         // console.log(rows);
         return rows;
@@ -13,12 +13,12 @@ const getAllUsers = async () => {
         throw new Error('sql query failed');
     }
 };
-const getUserLogin = async (email) => {
+const getUserLogin = async (userName) => {
     //console.log('get user login for', email);
     try {
         const [rows] = await promisePool.execute(
-            'SELECT * FROM user WHERE email=?;',
-            [email]);
+            'SELECT * FROM user WHERE userName=?;',
+            [userName]);
         console.log('getUserLogin result:', rows);
         return rows;
     } catch (e) {
@@ -27,7 +27,7 @@ const getUserLogin = async (email) => {
 };
 const getUserById = async (id) => {
     try {
-        const sql = `SELECT Id, email, userName, FROM user WHERE Id=?`;
+        const sql = `SELECT u_Id, userName, email FROM user WHERE u_Id=?`;
         const [rows] = await promisePool.query(sql, [id]);
         // console.log(rows);
         return rows[0];

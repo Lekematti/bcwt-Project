@@ -21,7 +21,7 @@ CREATE TABLE `message`
     `timeStamp` TIMESTAMP NOT NULL,
     `user_Id` INT,
     PRIMARY KEY (`m_Id`),
-    FOREIGN KEY (`user_Id`) REFERENCES `user`(`u_Id`)
+    FOREIGN KEY (`user_Id`) REFERENCES `user`(`u_Id`) ON DELETE CASCADE ON UPDATE CASCADE
 );
 
 CREATE TABLE `reply`

@@ -8,16 +8,18 @@ router.route('/')
     .get(userController.getUserList)
     .post(
 
-        body('userName').isAlphanumeric().isLength({min: 1, max: 40}).escape().trim(),
-        body('email').isEmail().normalizeEmail(),
-        body('password').isLength({min: 4}),
+        body('userNameIn').isAlphanumeric().isLength({min: 1, max: 40}).escape().trim(),
+        body('userNameUp').isAlphanumeric().isLength({min: 1, max: 40}).escape().trim(),
+        //body('emailUp').isEmail().normalizeEmail(),
+        body('passwordIn').isLength({min: 4}),
+        body('passwordUp').isLength({min: 4}),
         userController.postUser)
 
-router.route('/:id')
+router.route('/')
     .get(
-        body('userName').isAlphanumeric().isLength({min: 1, max: 40}).escape().trim(),
-        body('email').isEmail().normalizeEmail(),
-        body('password').isLength({min: 4}),
+        body('userNameUp').isAlphanumeric().isLength({min: 1, max: 40}).escape().trim(),
+        body('emailUp').isEmail().normalizeEmail(),
+        body('passwordUp').isLength({min: 4}),
         userController.getUser)
 
 
