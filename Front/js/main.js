@@ -1,6 +1,6 @@
 'use strict';
-//Modal
 
+//Modal
 const modalSignUp = document.getElementById("myModalSignUp");
 const btnSignUp = document.getElementById("signUpBtn");
 const spanSignUp = document.getElementsByClassName("close1")[0];
@@ -33,8 +33,8 @@ window.onclick = function(event) {
     }
 }
 //Modal end
-//login/signup functionalities
 
+//login/signup functionalities
 const submitLogIn = document.getElementById("submitLogin");
 
 submitLogIn.addEventListener("click", function (event) {
@@ -62,3 +62,4 @@ submitSignUp.addEventListener("click", function (event) {
         window.location.href = "userView.html";
     }
 });
+//login/signup functionalities end
