@@ -63,22 +63,6 @@ body {
     padding-left: 20px;
     font-family: Papyrus;
 }
-#signUp{
-    background-color: azure;
-    color: black;
-}
-.signUp:hover{
-    background-color: black;
-    color: white;
-}
-#login{
-    background-color: azure;
-    color: black;
-}
-.login:hover{
-    background-color: black;
-    color: white;
-}
 .modal{
     display: none;
     position: fixed;
@@ -98,7 +82,6 @@ body {
     border: 1px solid #888;
     width: 40%;
     height: 20%;
-
 }
 .close1{
     color: black;
@@ -124,15 +107,7 @@ body {
     text-decoration: none;
     cursor: pointer;
 }
-.nav a{
-    padding: 12px 15px;
-    font-size: 15px;
-    color: #722a9f;
-}
-.nav a:hover{
-    background-color: black;
-    color: white;
-}
+
 footer{
     display: flex;
     justify-content: center;
