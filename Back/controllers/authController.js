@@ -6,6 +6,8 @@ require('dotenv').config();
 
 const login = async (req, res) => {
     passport.authenticate('local', { session: false }, async (err, user, info) => {
+        console.log("error", err)
+        console.log("user:", user)
         if (err || !user) {
             return res.status(401).json({
                 message: 'Wrong username or password',
@@ -28,7 +30,7 @@ const login = async (req, res) => {
             }
 
             // Generate and send JWT token
-            const token = jwt.sign({ Id: user.u_Id }, process.env.JWT_SECRET);
+            const token = jwt.sign({ u_Id: user.u_Id }, process.env.JWT_SECRET);
             return res.json({ user: user, token });
         } catch (error) {
             console.error(error);

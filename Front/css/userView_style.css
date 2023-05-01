@@ -31,12 +31,12 @@ section{
     background-color: azure;
     width: 90%;
     min-height: 1200px;
-    justify-content: center;
+    max-height: 1200px;
+    justify-content: start;
     align-items: center;
-    padding-top: 400px;
     padding-right: 15px;
     padding-left: 15px;
-    overflow: auto;
+    overflow: scroll;
 
 }
 .upper{
@@ -87,6 +87,20 @@ h2{
 .mainText{
     font-family: Papyrus;
 }
+
+<!-- -->
+img{
+    max-height: 600px;
+    max-width: 600px;
+}
+ul{
+    list-style: none
+}
+p{
+    padding: 10px;
+    background: #4CAF50;
+}
+h2[]
 
 @media screen and (max-width: 800px){
     .wrapper{

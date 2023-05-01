@@ -43,7 +43,7 @@ passport.use(
         async (jwtPayload, done) => {
             try {
                 // Get user data from DB using userModel
-                const user = await getUserById(jwtPayload.Id);
+                const user = await getUserById(jwtPayload.u_Id);
                 if (!user) {
                     return done(null, false, { message: 'User not found' });
                 }
