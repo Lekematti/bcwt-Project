@@ -38,10 +38,10 @@ window.onclick = function(event) {
 const submitLogIn = document.getElementById("submitLogin");
 
 submitLogIn.addEventListener("click", function (event) {
-    const username = document.getElementById("userNameIn").value;
+    const userName = document.getElementById("userNameIn").value;
     const password = document.getElementById("passwordIn").value;
 
-    if (!username || !password) {
+    if (!userName || !password) {
         alert("Fill in correct information!")
         event.preventDefault();
     }else{

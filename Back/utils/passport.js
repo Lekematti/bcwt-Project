@@ -35,22 +35,25 @@ passport.use(
 
 // JWT strategy for handling bearer token
 passport.use(
-  new JWTStrategy(
-    {
-      jwtFromRequest: ExtractJWT.fromAuthHeaderAsBearerToken(),
-      secretOrKey: process.env.JWT_SECRET,
-    },
-    async (jwtPayload, done) => {
-      // Get user data from DB using userModel 
-      console.log('user from token', jwtPayload);
-      try {
-        const user = await getUserById(jwtPayload.Id);
-        return done(null, user);
-      } catch (error) {
-        return done(error);
-      }
-    }
-  )
+    new JWTStrategy(
+        {
+            jwtFromRequest: ExtractJWT.fromAuthHeaderAsBearerToken(),
+            secretOrKey: process.env.JWT_SECRET,
+        },
+        async (jwtPayload, done) => {
+            try {
+                // Get user data from DB using userModel
+                const user = await getUserById(jwtPayload.Id);
+                if (!user) {
+                    return done(null, false, { message: 'User not found' });
+                }
+                return done(null, user);
+            } catch (error) {
+                return done(error);
+            }
+        }
+    )
 );
+
 
 module.exports = passport;
