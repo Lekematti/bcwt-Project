@@ -50,7 +50,7 @@ const insertPost = async (post) => {
 
 const deletePost = async (id) => {
     try {
-        const sql = `DELETE FROM message WHERE m_Id=?`;
+        const sql = 'DELETE FROM message WHERE m_Id=?';
         const [rows] = await promisePool.query(sql, [id]);
         console.log(rows);
         return rows;

@@ -23,42 +23,46 @@ addForm.addEventListener('submit', async (evt) => {
     location.href = 'userView.html';
 });
 
-const ul = document.querySelector('#list');
+let ul = document.querySelector('#list');
 
+let img, figure, h2, p1, delButton, li;
+let fetchOptions, response, json;
 // create post cards
 const createPostCards = (posts) => {
+    console.log("input:" , posts);
     // clear ul
     ul.innerHTML = '';
-    posts.forEach((post) => {
+    posts.forEach( (post) => {
         // create li with DOM methods
-        const img = document.createElement('img');
+        img = document.createElement('img');
         img.src ='../uploads/' + post.filename;
         img.alt = post.name;
         img.classList.add('resp');
 
-        const figure = document.createElement('figure').appendChild(img);
+        figure = document.createElement('figure').appendChild(img);
 
 
-        const h2 = document.createElement('h2');
-        h2.innerHTML = post.title;
+        h2 = document.createElement('h2');
+        h2.innerHTML = `${post.title}`;
 
-        const p1 = document.createElement('p');
+        p1 = document.createElement('p');
         p1.innerHTML = `${post.content}`;
 
         // delete selected post
-        const delButton = document.createElement('button');
+        delButton = document.createElement('button');
         delButton.innerHTML = 'Delete';
         delButton.classList.add('button');
         delButton.addEventListener('click', async () => {
-            const fetchOptions = {
+            fetchOptions = {
                 method: 'DELETE',
                 headers: {
                     Authorization: 'Bearer ' + sessionStorage.getItem('token'),
                 },
             };
             try {
-                const response = await fetch(url + '/post/' + post.Id, fetchOptions);
-                const json = await response.json();
+                response = await fetch(url + '/post/' + post.m_Id, fetchOptions);
+                json = await response.json();
+                console.log()
                 console.log("rabadababuu",post);
                 console.log('delete response', json);
                 getPost();
@@ -67,7 +71,7 @@ const createPostCards = (posts) => {
             }
         });
 
-        const li = document.createElement('li');
+        li = document.createElement('li');
         li.classList.add('light-border');
 
         li.appendChild(h2);
@@ -75,34 +79,8 @@ const createPostCards = (posts) => {
         li.appendChild(p1);
         li.appendChild(delButton);
         ul.appendChild(li);
-        if (user.u_Id === message.user_Id) {
+        console.log("Appeneded li to ul");
 
-            // delete selected cat
-            const delButton = document.createElement('button');
-            delButton.innerHTML = 'Delete';
-            delButton.classList.add('button');
-            delButton.addEventListener('click', async () => {
-                const fetchOptions = {
-                    method: 'DELETE',
-                    headers: {
-                        Authorization: 'Bearer ' + sessionStorage.getItem('token'),
-                    },
-                };
-                try {
-                    const response = await fetch(
-                        url + '/post/' + message.m_Id,
-                        fetchOptions
-                    );
-                    const json = await response.json();
-                    console.log('delete response', json);
-                    getPost();
-                } catch (e) {
-                    console.log(e.message);
-                }
-            });
-
-            li.appendChild(delButton);
-        }
     });
 };
 
