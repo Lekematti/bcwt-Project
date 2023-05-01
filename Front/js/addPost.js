@@ -1,5 +1,5 @@
 'use strict';
-const url = 'http://localhost:3000'; // change url when uploading to server
+const url = 'https://bcwt-server1.westeurope.cloudapp.azure.com'; // change url when uploading to server
 
 // select existing html elements
 const userList = document.querySelector('.add-owner');
