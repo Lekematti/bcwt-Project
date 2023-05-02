@@ -1,10 +1,10 @@
 'use strict';
-const url = 'https://bcwt-server1.westeurope.cloudapp.azure.com'; // change url when uploading to server
+const url = 'http://localhost:3000'; // change url when uploading to server
 
 // select existing html elements
 const loginForm = document.querySelector('#loginForm');
 const addUserForm = document.querySelector('#signUpForm');
-let user = JSON.parse(sessionStorage.getItem('user'));
+//let user = JSON.parse(sessionStorage.getItem('user'));
 // login
 loginForm.addEventListener('submit', async (evt) => {
     evt.preventDefault();
@@ -26,7 +26,7 @@ loginForm.addEventListener('submit', async (evt) => {
         // save token
         sessionStorage.setItem('token', json.token);
         sessionStorage.setItem('user', JSON.stringify(json.user));
-        user = JSON.parse(sessionStorage.getItem('user'));
+        //user = JSON.parse(sessionStorage.getItem('user'));
         location.href = 'userView.html';
     }
 });
@@ -45,4 +45,7 @@ addUserForm.addEventListener('submit', async (evt) => {
     const response = await fetch(url + '/auth/register', fetchOptions);
     const json = await response.json();
     alert(json.message);
+    if(response.ok){
+        location.href='userView.html';
+    }
 });

@@ -45,7 +45,7 @@ submitLogIn.addEventListener("click", function (event) {
         alert("Fill in correct information!")
         event.preventDefault();
     }else{
-        window.location.href = "index.html";
+        //window.location.href = "index.html";
     }
 });
 const submitSignUp = document.getElementById("submitSignup");

@@ -1,41 +1,29 @@
 'use strict';
 const jwt = require('jsonwebtoken');
 const passport = require('passport');
-const userModel = require('../models/userModel'); // import the module that defines userModel
 require('dotenv').config();
 
-const login = async (req, res) => {
-    passport.authenticate('local', { session: false }, async (err, user, info) => {
-        console.log("error", err)
-        console.log("user:", user)
+const login = (req, res) => {
+    console.log(req.body)
+    passport.authenticate('local', {session: false}, (err, user, info) => {
+        console.log("error: ",err)
+        console.log("user not found: ",!user)
         if (err || !user) {
+            console.log('auth error', info);
             return res.status(401).json({
                 message: 'Wrong username or password',
+                // or more detailed message from passport:
+                //message: info.message,
             });
         }
-
-        try {
-            // Get user by username
-            const [user] = await userModel.getUserLogin(user.userName);
-
-            if (!user) {
-                return res.status(401).json({ message: 'Invalid credentials' });
+        req.login(user, {session: false}, (err) => {
+            if (err) {
+                res.json({message: err});
             }
-
-            // Check if password is correct
-            const isPasswordCorrect = await bcrypt.compare(user.password, user.password);
-
-            if (!isPasswordCorrect) {
-                return res.status(401).json({ message: 'Invalid credentials' });
-            }
-
-            // Generate and send JWT token
-            const token = jwt.sign({ u_Id: user.u_Id }, process.env.JWT_SECRET);
-            return res.json({ user: user, token });
-        } catch (error) {
-            console.error(error);
-            return res.status(500).json({ message: 'Something went wrong' });
-        }
+            // generate a signed json web token with the user id in payload and return it in the response
+            const token = jwt.sign({u_Id: user.u_Id}, process.env.JWT_SECRET);
+            return res.json({user, token});
+        });
     })(req, res);
 };
 const logout = (req, res) => {

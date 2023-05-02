@@ -13,6 +13,7 @@ router.route('/')
         body('password').isLength({min: 4}),
         userController.postUser)
 router.get("/token", userController.checkToken);
+router.get("/:userId", userController.getUser);
 /*router.route('/')
     .get(
         body('userNameUp').isAlphanumeric().isLength({min: 1, max: 40}).escape().trim(),

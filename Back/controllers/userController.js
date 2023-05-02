@@ -13,35 +13,35 @@ const getUserList = async (req, res) => {
     }
 };
 
+
+
+// const getUser = async (req, res) => {
+//     //convert id value to number
+//     const userId = Number(req.params.userId);
+//     //check if a number is not an integer
+//     if(!Number.isInteger(userId)) {
+//         res.status(400).json({error: 500, message: 'invalid id'})
+//         return;
+//     }
+//     try {
+//         const [user] = await userModel.getUserById(userId)
+//         res.json(user);
+//     }
+//     catch (error){
+//         res.status(404).json({message: 'user not found'});
+//     }
+// }
+
 const getUser = async (req, res) => {
-    //console.log(req.params);
-    const id = req.params.Id;
-    const user = await userModel.getUserLogin(id);
+    console.log(req.params);
+    const id = req.params.userId;
+    const user = await userModel.getUserById(id);
     if (user) {
         res.json(user);
     } else {
-        // send 404 response if user not found
-        // res.sendStatus(404);
         res.status(404).json({message: 'User not found.'});
     }
 };
-
-/*const postUser = async (req, res) => {
-    try {
-        // add cat details to cats array
-        const newUser = {
-            userName: req.body.userName,
-            email: req.body.email,
-            password: req.body.password,
-        }
-        const result = await userModel.insertUser(newUser)
-        // send correct response if upload successful
-        res.status(201).json({message: 'new user added',newUser});
-    }
-    catch (error){
-        res.status(400).json({error: 500, message: 'adding new user failed'})
-    }
-};*/
 
 const postUser = async (req, res) => {
     console.log('Creating a new user: ', req.body);
@@ -57,7 +57,7 @@ const postUser = async (req, res) => {
     if (errors.isEmpty()) {
         try {
             const result = await userModel.insertUser(newUser);
-            res.status(201).json({message: 'user created', Id: result});
+            res.status(201).json({message: 'user created', userId: result});
         } catch (error) {
             res.status(500).json({message: error.message});
         }

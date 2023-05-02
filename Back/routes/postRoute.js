@@ -18,7 +18,7 @@ const {body} = require('express-validator');
 const upload = multer({dest: 'uploads/', fileFilter});
 
 
-//testi
+
 router.get('/', postController.getPostList)
 
 // Root of post endpoint (e.g. http://localhost:3000/post)

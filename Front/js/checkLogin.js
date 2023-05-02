@@ -1,7 +1,7 @@
-'use strict';
-const url = 'https://bcwt-server1.westeurope.cloudapp.azure.com';
 
 (async () => {
+    'use strict';
+    const url = 'http://localhost:3000';
     // check sessionStorage
     if (!sessionStorage.getItem('token') || !sessionStorage.getItem('user')) {
         location.href = 'index.html';
@@ -16,7 +16,7 @@ const url = 'https://bcwt-server1.westeurope.cloudapp.azure.com';
         };
         const response = await fetch(url + '/user/token', fetchOptions);
         if (!response.ok) {
-            location.href = 'logout.html';
+            location.href = 'userView.html';
         } else {
             const json = await response.json();
             sessionStorage.setItem('user', JSON.stringify(json.user));
