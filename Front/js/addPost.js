@@ -27,7 +27,7 @@ addForm.addEventListener('submit', async (evt) => {
 
 let ul = document.querySelector('#list');
 
-let img, figure, h2, p1, delButton, li;
+let img, figure, h3, p1, delButton, li;
 let fetchOptions, response, json;
 // create post cards
 const createPostCards = (posts) => {
@@ -44,8 +44,8 @@ const createPostCards = (posts) => {
         figure = document.createElement('figure').appendChild(img);
 
 
-        h2 = document.createElement('h2');
-        h2.innerHTML = `${post.title}`;
+        h3 = document.createElement('h3');
+        h3.innerHTML = `${post.title}`;
 
         p1 = document.createElement('p');
         p1.innerHTML = `${post.content}`;
@@ -76,7 +76,7 @@ const createPostCards = (posts) => {
         li = document.createElement('li');
         li.classList.add('light-border');
 
-        li.appendChild(h2);
+        li.appendChild(h3);
         li.appendChild(figure);
         li.appendChild(p1);
         li.appendChild(delButton);

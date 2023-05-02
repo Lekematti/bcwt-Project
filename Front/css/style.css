@@ -28,6 +28,7 @@ body {
     display: flex;
     flex-direction: column;
     padding-left: 15px;
+
 }
 .upper{
     background-color: black;
@@ -124,9 +125,21 @@ footer{
 h2{
     font-weight: bold;
     text-align: center;
+    border-radius: 30px;
+    font-family: Papyrus;
+}
+h3{
+    font-weight: bold;
+    text-align: center;
+    border-radius: 30px;
+    font-family: Papyrus;
+}
+p{
+    font-family: Papyrus;
 }
 .mainText{
     font-family: Papyrus;
+    font-size: 20px;
 }
 
 @media screen and (max-width: 800px){
