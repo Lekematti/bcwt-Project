@@ -8,7 +8,6 @@ const passport = require('./Back/utils/passport');
 const app = express();
 const port = 3000;
 
-
 // Log requests middleware
 app.use((req, res, next) => {
     console.info(req.method + ' ' + req.path);//new Date() + ': ' +

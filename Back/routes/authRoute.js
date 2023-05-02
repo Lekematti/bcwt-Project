@@ -15,5 +15,4 @@ router
         body('password').isLength({min: 4}).trim(),
         postUser
     );
-
 module.exports = router;

@@ -1,9 +1,9 @@
-// userController
 'use strict';
 const userModel = require('../models/userModel');
 const {validationResult} = require('express-validator');
 const bcrypt = require('bcryptjs');
 
+// Get list of all users
 const getUserList = async (req, res) => {
     try {
         const users = await userModel.getAllUsers();
@@ -12,26 +12,7 @@ const getUserList = async (req, res) => {
         res.status(500).json({message: error.message});
     }
 };
-
-
-
-// const getUser = async (req, res) => {
-//     //convert id value to number
-//     const userId = Number(req.params.userId);
-//     //check if a number is not an integer
-//     if(!Number.isInteger(userId)) {
-//         res.status(400).json({error: 500, message: 'invalid id'})
-//         return;
-//     }
-//     try {
-//         const [user] = await userModel.getUserById(userId)
-//         res.json(user);
-//     }
-//     catch (error){
-//         res.status(404).json({message: 'user not found'});
-//     }
-// }
-
+// Get a user by their ID
 const getUser = async (req, res) => {
     console.log(req.params);
     const id = req.params.userId;
@@ -42,16 +23,20 @@ const getUser = async (req, res) => {
         res.status(404).json({message: 'User not found.'});
     }
 };
-
+// Create a new user
 const postUser = async (req, res) => {
     console.log('Creating a new user: ', req.body);
+
+    // Generate a salt and hash the password
     const salt = await bcrypt.genSalt(10);
     const password = await bcrypt.hash(req.body.password, salt);
+
     const newUser = {
         userName: req.body.userName,
         email: req.body.email,
         password: password,
     };
+    // Check if there are validation errors
     const errors = validationResult(req);
     console.log('validation errors', errors);
     if (errors.isEmpty()) {
@@ -68,11 +53,10 @@ const postUser = async (req, res) => {
         });
     }
 };
-
+// Check if the JWT token is valid
 const checkToken = (req, res) => {
     res.json({user: req.user});
 };
-
 const userController = {
     getUserList,
     getUser,
@@ -80,4 +64,3 @@ const userController = {
     checkToken,
 };
 module.exports = userController;
-

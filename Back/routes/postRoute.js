@@ -17,11 +17,8 @@ const {body} = require('express-validator');
  };
 const upload = multer({dest: 'uploads/', fileFilter});
 
-
-
 router.get('/', postController.getPostList)
 
-// Root of post endpoint (e.g. http://localhost:3000/post)
 router.route('/')
     .get(postController.getPostList)
     .post(upload.single('filename'),
@@ -32,17 +29,7 @@ router.route('/')
         body('user_Id'),
         postController.postPost
     )
-    // .put(
-    //     body('postName'),
-    //     body('postText'),
-    //     body('file'),
-    //     postController.putPost
-    // );
-
-
-// All /post/:id endpoints
 router.route('/:id')
-    //.get(catController.getCat)
     .delete(postController.deletePost);
 
 module.exports = router;

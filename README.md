@@ -1,5 +1,9 @@
 # Instruction
-
+Project is designed for students who enjoy seeking and posting pictures
+of their overalls and patches. So basically the user of this website is either
+student or someone who is interested this stuff. Below this is the instructions
+how to get started with our application. You will find more help to 
+this project from stackoverflow.com
 ### First step: create a .env file to root and put this in there:
 DB_HOST="localhost"
 DB_NAME=""

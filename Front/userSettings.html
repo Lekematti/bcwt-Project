@@ -12,16 +12,12 @@
   <div class="nav">
     <h1 class="title">Overall Oasis</h1>
     <div>
-      <a href="#"><i class="fa fa-fw fa-user"></i></a>
+      <a href="userView.html"><i class="fa fa-fw fa-user"></i></a>
     </div>
   </div>
-
-
-
   <div class="main">
-
   </div>
-  <form id="userSettings">
+  <form id="userSettings" action="http://localhost:3000/userView.html" method="POST">
     <input class="input" type="text" placeholder="Change Email" name="title" required>
     <input class="input" type="password" placeholder="Change Password" name="title" required>
     <button type="submit">Save</button>
@@ -31,6 +27,8 @@
     Täällä on sivun pohja.
   </footer>
 </div>
+<script src="./js/serialize.js"></script>
+<script type="module" src="./js/modifyUser.js"></script>
 </body>
 </html>
 

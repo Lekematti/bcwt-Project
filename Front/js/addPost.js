@@ -2,14 +2,8 @@
 import {url} from '../conf.js';
 //const url = 'http://localhost:3000';
 
-const user = JSON.parse(sessionStorage.getItem('user'));
-
-// select existing html elements
-const userList = document.querySelector('.add-owner');
-
 // submit add post form
 const addForm = document.querySelector('#addPost');
-
 addForm.addEventListener('submit', async (evt) => {
     evt.preventDefault();
     const fd = new FormData(addForm);
@@ -25,7 +19,6 @@ addForm.addEventListener('submit', async (evt) => {
     alert(json.message);
     location.href = 'userView.html';
 });
-
 let ul = document.querySelector('#list');
 
 let img, figure, h3, p1, delButton, li;
@@ -43,8 +36,6 @@ const createPostCards = (posts) => {
         img.classList.add('resp');
 
         figure = document.createElement('figure').appendChild(img);
-
-
         h3 = document.createElement('h3');
         h3.innerHTML = `${post.title}`;
 
@@ -66,17 +57,14 @@ const createPostCards = (posts) => {
                 response = await fetch(url + '/post/' + post.m_Id, fetchOptions);
                 json = await response.json();
                 console.log()
-                console.log("rabadababuu",post);
                 console.log('delete response', json);
                 getPost();
             } catch (e) {
                 console.log(e.message);
             }
         });
-
         li = document.createElement('li');
         li.classList.add('light-border');
-
         li.appendChild(h3);
         li.appendChild(figure);
         li.appendChild(p1);
@@ -86,8 +74,6 @@ const createPostCards = (posts) => {
 
     });
 };
-
-
 // AJAX call
 const getPost = async () => {
     try {
@@ -98,7 +84,6 @@ const getPost = async () => {
         };
         const response = await fetch(url + '/post', fetchOptions);
         const post = await response.json();
-        console.log("jabadabaduu",post);
         createPostCards(post);
     } catch (e) {
         console.log(e.message);
