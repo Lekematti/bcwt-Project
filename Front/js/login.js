@@ -1,19 +1,14 @@
 'use strict';
-
-// Importing url from conf.js file
 import {url} from '../conf.js';
-
-// Selecting existing HTML elements
+//const url = 'http://localhost:3000/';
+// select existing html elements
 const loginForm = document.querySelector('#loginForm');
 const addUserForm = document.querySelector('#signUpForm');
-
-// Event listener for login form submission
+//let user = JSON.parse(sessionStorage.getItem('user'));
+// login
 loginForm.addEventListener('submit', async (evt) => {
     evt.preventDefault();
-    // Serializing the form data into JSON format
     const data = serializeJson(loginForm);
-
-// Creating fetch options to be passed to the fetch function
     const fetchOptions = {
         method: 'POST',
         headers: {
@@ -21,21 +16,34 @@ loginForm.addEventListener('submit', async (evt) => {
         },
         body: JSON.stringify(data),
     };
-
-// Making a POST request to the server to log in the user
     const response = await fetch(url + '/auth/login', fetchOptions);
     const json = await response.json();
     console.log('login response', json);
-
-// If login is unsuccessful, display an alert message
     if (!json.user) {
         alert(json.message);
     } else {
-        // Save token and user data in session storage
+        // save token
         sessionStorage.setItem('token', json.token);
         sessionStorage.setItem('user', JSON.stringify(json.user));
-
-        // Redirect to userView.html page
+        //user = JSON.parse(sessionStorage.getItem('user'));
         location.href = 'userView.html';
+    }
+});
+// submit register form
+addUserForm.addEventListener('submit', async (evt) => {
+    evt.preventDefault();
+    const data = serializeJson(addUserForm);
+    const fetchOptions = {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(data),
+    };
+    const response = await fetch(url + '/auth/register', fetchOptions);
+    const json = await response.json();
+    alert(json.message);
+    if(response.ok){
+        location.href='userView.html';
     }
 });
