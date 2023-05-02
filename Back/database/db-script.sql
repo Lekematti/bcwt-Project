@@ -16,7 +16,7 @@ CREATE TABLE `message`
 (
     `m_Id` INT NOT NULL AUTO_INCREMENT,
     `title` VARCHAR(255) NOT NULL,
-    `content` VARCHAR(255) NOT NULL,
+    `content` TEXT NOT NULL,
     `filename` TEXT,
     `timeStamp` TIMESTAMP NOT NULL,
     `user_Id` INT,
