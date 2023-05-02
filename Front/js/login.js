@@ -1,6 +1,6 @@
 'use strict';
-import {url} from './conf';
-
+import {url} from '../conf.js';
+//const url = 'http://localhost:3000';
 // select existing html elements
 const loginForm = document.querySelector('#loginForm');
 const addUserForm = document.querySelector('#signUpForm');

@@ -1,5 +1,6 @@
 'use strict';
-import {url} from './conf';
+import {url} from '../conf.js';
+//const url = 'http://localhost:3000';
 
 (async () => {
     try {
